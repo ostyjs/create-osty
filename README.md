@@ -31,3 +31,13 @@ Osty is designed to scale with your needs. It works well for small projects and 
 ## License
 
 Osty is [MIT licensed](./LICENSE).
+
+## Support
+
+Osty is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please consider donating:
+
+- ⚡ Zap sats to [sepehr@getalby.com](sepehr@getalby.com)
+
+## Contributing
+
+We welcome contributions to Osty. Please read our [contributing guide](./CONTRIBUTING.md) to get started.
