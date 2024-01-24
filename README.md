@@ -50,7 +50,7 @@ Osty is designed to scale with your needs. It works well for small projects and 
 
 ## License
 
-Osty is [MIT licensed](./LICENSE).
+Osty is [MIT licensed](./LICENSE.md).
 
 ## Support
 
