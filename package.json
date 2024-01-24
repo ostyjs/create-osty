@@ -1,6 +1,6 @@
 {
   "name": "create-osty",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "license": "MIT",
   "author": "Sepehr Safari",
@@ -21,17 +21,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ostyjs/osty.git",
-    "directory": "packages/create-osty"
+    "url": "git+https://github.com/ostyjs/create-osty.git"
   },
   "keywords": [
     "nostr",
     "bitcoin"
   ],
   "bugs": {
-    "url": "https://github.com/ostyjs/osty/issues"
+    "url": "https://github.com/ostyjs/create-osty/issues"
   },
-  "homepage": "https://github.com/ostyjs/osty/tree/master/packages/create-osty#readme",
+  "homepage": "https://github.com/ostyjs/create-osty#readme",
   "devDependencies": {
     "@types/minimist": "^1.2.5",
     "@types/prompts": "^2.4.9",
