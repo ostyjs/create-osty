@@ -1,0 +1,42 @@
+{
+  "name": "create-osty",
+  "version": "0.2.0",
+  "type": "module",
+  "license": "MIT",
+  "author": "Sepehr Safari",
+  "description": "Build your next Nostr client with Osty",
+  "bin": {
+    "create-osty": "index.js"
+  },
+  "files": [
+    "index.js",
+    "template-react-shadcn",
+    "template-react-tailwind",
+    "dist"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ostyjs/osty.git",
+    "directory": "packages/create-osty"
+  },
+  "keywords": [
+    "nostr",
+    "bitcoin"
+  ],
+  "bugs": {
+    "url": "https://github.com/ostyjs/osty/issues"
+  },
+  "homepage": "https://github.com/ostyjs/osty/tree/master/packages/create-osty#readme",
+  "devDependencies": {
+    "@types/minimist": "^1.2.5",
+    "@types/prompts": "^2.4.9",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2",
+    "unbuild": "^2.0.0"
+  }
+}
