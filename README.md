@@ -1,8 +1,6 @@
 # Osty
 
-## Introduction
-
-Create your next Nostr client in seconds with Osty. Production-Ready. Scalable.
+Start building on Nostr in seconds with Osty. Fast. Production-Ready. Scalable.
 
 ## Getting Started
 

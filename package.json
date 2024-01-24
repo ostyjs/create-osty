@@ -1,10 +1,10 @@
 {
   "name": "create-osty",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "type": "module",
   "license": "MIT",
   "author": "Sepehr Safari",
-  "description": "Build your next Nostr client with Osty",
+  "description": "Start building on Nostr in seconds with Osty. Fast. Production-Ready. Scalable.",
   "bin": {
     "create-osty": "index.js"
   },
@@ -37,5 +37,8 @@
     "minimist": "^1.2.8",
     "prompts": "^2.4.2",
     "unbuild": "^2.0.0"
-  }
+  },
+  "funding": [
+    "https://getalby.com/p/sepehr"
+  ]
 }
