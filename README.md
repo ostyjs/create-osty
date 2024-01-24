@@ -2,12 +2,32 @@
 
 ## Introduction
 
-Make your next Nostr client in seconds with Osty. Production-Ready. Scalable.
+Create your next Nostr client in seconds with Osty. Production-Ready. Scalable.
 
-## Installation
+## Getting Started
+
+With `npm`:
 
 ```
 $ npm create osty@latest
+```
+
+With `yarn`:
+
+```
+$ yarn create osty
+```
+
+With `pnpm`:
+
+```
+$ pnpm create osty
+```
+
+With `bun`:
+
+```
+$ bun create osty
 ```
 
 ## Features
