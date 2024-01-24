@@ -6,7 +6,7 @@ import {
   ToastTitle,
   ToastViewport,
 } from '@/shared/components/ui/toast';
-import { useToast } from '@/shared/hooks';
+import { useToast } from '@/shared/hooks/ui';
 
 export function Toaster() {
   const { toasts } = useToast();
