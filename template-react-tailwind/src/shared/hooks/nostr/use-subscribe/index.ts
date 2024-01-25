@@ -16,7 +16,10 @@ export const useSubscribe = () => {
     setEvents([]);
   };
 
-  const subscribe = (filters: NDKFilter[], opts?: NDKSubscriptionOptions) => {
+  const subscribe = (
+    filters: NDKFilter[],
+    opts?: NDKSubscriptionOptions & { fetchProfile?: boolean },
+  ) => {
     if (status == 'idle') {
       setStatus('subscribed');
 
@@ -24,7 +27,13 @@ export const useSubscribe = () => {
 
       subscriptionRef.current = ndk.subscribe(filters, opts);
       subscriptionRef.current.on('event', (event: NDKEvent) => {
-        setEvents((prev) => [...prev, event]);
+       if (opts?.fetchProfile == true) {
+          event.author.fetchProfile().then(() => {
+            setEvents((prev) => [...prev, event]);
+          });
+        } else {
+          setEvents((prev) => [...prev, event]);
+        }
       });
       subscriptionRef.current.on('eose', () => {
         setStatus('eose');
