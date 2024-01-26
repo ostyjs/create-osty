@@ -1,8 +1,8 @@
-> **Note**: This project is still in early development. Please don't use it in production yet.
-
 # Osty
 
 Start building on Nostr in seconds with Osty. Fast. Production-Ready. Scalable.
+
+> **Note**: This project is still in early development. Please be aware that there may be missing features or bugs. If you would like to help us build Osty, please feel free to [contribute](./CONTRIBUTING.md)!
 
 ## Getting Started
 
