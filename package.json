@@ -1,6 +1,6 @@
 {
   "name": "create-osty",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "type": "module",
   "license": "MIT",
   "author": "Sepehr Safari",
@@ -12,7 +12,8 @@
     "index.js",
     "dist",
     "templates",
-    "!**/node_modules"
+    "!**/node_modules",
+    "!**/package-lock.json"
   ],
   "scripts": {
     "dev": "unbuild --stub",
