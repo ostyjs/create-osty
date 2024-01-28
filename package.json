@@ -1,6 +1,6 @@
 {
   "name": "create-osty",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "type": "module",
   "license": "MIT",
   "author": "Sepehr Safari",
@@ -10,9 +10,8 @@
   },
   "files": [
     "index.js",
-    "template-react-shadcn",
-    "template-react-tailwind",
-    "dist"
+    "dist",
+    "templates"
   ],
   "scripts": {
     "dev": "unbuild --stub",
