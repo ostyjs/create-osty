@@ -6,29 +6,31 @@ Start building on Nostr in seconds with Osty. Fast. Production-Ready. Scalable.
 
 ## Getting Started
 
-With `npm`:
-
 ```
 $ npm create osty@latest
 ```
 
-With `yarn`:
-
-```
-$ yarn create osty
-```
-
-With `pnpm`:
-
-```
-$ pnpm create osty
-```
-
-With `bun`:
-
-```
-$ bun create osty
-```
+<details>
+  <summary>Looking for other package managers?</summary>
+  
+  With `yarn`:
+  
+  ```
+  $ yarn create osty
+  ```
+  
+  With `pnpm`:
+  
+  ```
+  $ pnpm create osty
+  ```
+  
+  With `bun`:
+  
+  ```
+  $ bun create osty
+  ```
+</details>
 
 ## Features
 
