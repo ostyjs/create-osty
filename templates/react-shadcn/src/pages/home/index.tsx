@@ -19,7 +19,7 @@ export const HomePage = () => {
         <Card>
           <CardHeader>
             <CardTitle>Osty</CardTitle>
-            <CardDescription>Bootstrap your next Nostr client in seconds.</CardDescription>
+            <CardDescription>Start building on Nostr in seconds with Osty</CardDescription>
           </CardHeader>
 
           <Separator />
@@ -38,7 +38,7 @@ export const HomePage = () => {
             </p>
 
             <Button variant="outline" size="icon" asChild className="ml-auto">
-              <a href="https://github.com/sepehr-safari/osty" target="_blank" rel="noreferrer">
+              <a href="https://github.com/ostyjs/create-osty" target="_blank" rel="noreferrer">
                 <GitHubLogoIcon />
               </a>
             </Button>
