@@ -1,4 +1,4 @@
-![create-osty](https://socialify.git.ci/ostyjs/create-osty/image?description=1&descriptionEditable=Start%20building%20on%20Nostr%20in%20seconds%20with%20Osty.%20Fast.%20Production-Ready.%20Scalable.%0A%24%20npm%20create%20osty%40latest&font=Jost&forks=1&issues=1&language=1&logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F157408743&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Dark)
+![create-osty](https://socialify.git.ci/ostyjs/create-osty/image?description=1&descriptionEditable=Start%20building%20on%20Nostr%20in%20seconds%20with%20Osty.%20Fast.%20Production-Ready.%20Scalable.%0A%24%20npm%20create%20osty%40latest&font=KoHo&forks=1&issues=1&language=1&logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F157408743&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Dark)
 
 # Osty
 
