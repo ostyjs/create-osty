@@ -36,21 +36,59 @@ $ npm create osty@latest
 
 ## Features
 
-### Fast
+- ### Fast
 
-Osty is designed to help developers take Nostr applications from concept to completion as quickly as possible.
+  Osty is designed to help developers take Nostr applications from concept to completion as quickly as possible.
 
-### Batteries Included
+- ### Batteries Included
 
-Osty includes everything you need to build a Nostr application, including Nostr Development Kit, State Management, Routing, UI Components, and more.
+  Osty includes everything you need to build a Nostr application, including Nostr Development Kit, State Management, Routing, UI Components, and more.
 
-### Collaborative
+- ### Collaborative
 
-Osty is well-strucutred and modularized, so you can easily collaborate with others to build complex Nostr applications.
+  Osty is well-strucutred and modularized, so you can easily collaborate with others to build complex Nostr applications.
 
-### Scalable
+- ### Scalable
 
-Osty is designed to scale with your needs. It works well for small projects and large projects alike.
+  Osty is designed to scale with your needs. It works well for small projects and large projects alike.
+
+## Roadmap
+
+- [ ] Add support for common user interactions with Nostr:
+  - [ ] Media (Images, Videos, etc)
+    - [ ] Parsing media urls within text contents
+    - [ ] Uploading media (nostr.build, void.cat, etc)
+      - [ ] API helpers
+      - [ ] UI components
+  - [ ] Parsing tags and mentions within text contents
+  - [ ] Relays
+    - [ ] Helpers
+    - [ ] UI components
+  - [ ] Zaps
+    - [ ] Helpers
+    - [ ] UI components
+    - [ ] Zap Presets
+  - [ ] Reactions
+    - [ ] Likes
+    - [ ] Emojis
+    - [ ] Comments
+    - [ ] Reposts
+    - [ ] Zaps
+  - [ ] Threads
+    - [ ] Parsing parent and child
+  - [ ] Onboarding Process
+    - [ ] Helpers
+    - [ ] UI components
+  - [ ] Search
+  - [ ] Nostr Wallet Connect
+    - [ ] Helpers
+    - [ ] UI components
+  - [ ] Mute Words
+    - [ ] Helpers
+    - [ ] UI components
+  - [ ] Long Form Content (Markdown)
+    - [ ] Helpers for parsing, rendering, and editing
+    - [ ] UI components
 
 ## License
 
