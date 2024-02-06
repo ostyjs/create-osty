@@ -65,8 +65,8 @@ $ npm create osty@latest
     - [ ] Helpers
     - [ ] UI components
   - [ ] Zaps
-    - [ ] Helpers
-    - [ ] UI components
+    - [x] Helpers
+    - [x] UI components
     - [ ] Zap Presets
   - [ ] Reactions
     - [ ] Likes
