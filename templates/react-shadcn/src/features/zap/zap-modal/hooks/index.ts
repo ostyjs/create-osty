@@ -1,7 +1,7 @@
 import { useProfiles } from 'nostr-hooks';
 import { useState } from 'react';
 
-import { useToast } from '@/shared/hooks/ui';
+import { useToast } from '@/shared/components/ui/use-toast';
 
 import { ZAP_AMOUNTS } from '../config';
 import { ZapTarget } from '../types';
