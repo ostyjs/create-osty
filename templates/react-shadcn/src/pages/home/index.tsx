@@ -1,6 +1,6 @@
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 
-import { ModeToggle } from '@/shared/components';
+import { ModeToggle } from '@/shared/components/mode-toggle';
 import { Button } from '@/shared/components/ui/button';
 import {
   Card,

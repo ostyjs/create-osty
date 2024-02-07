@@ -5,7 +5,7 @@ import './index.css';
 
 import { router } from '@/pages';
 
-import { ThemeProvider } from '@/shared/components';
+import { ThemeProvider } from '@/shared/components/theme-provider';
 import { Toaster } from '@/shared/components/ui/toaster';
 
 export const App = () => {
