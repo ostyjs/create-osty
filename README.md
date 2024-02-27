@@ -73,14 +73,17 @@ $ npm create osty@latest
     - [ ] Emojis
     - [ ] Comments
     - [ ] Reposts
-    - [ ] Zaps
+    - [x] Zaps
   - [ ] Threads
     - [ ] Parsing parent and child
   - [ ] Onboarding Process
     - [ ] Helpers
     - [ ] UI components
   - [ ] Search
-  - [ ] Nostr Wallet Connect
+  - [ ] Nostr Wallet Connect (NIP46)
+    - [ ] Helpers
+    - [ ] UI components
+  - [ ] Nostr Connect (NIP47)
     - [ ] Helpers
     - [ ] UI components
   - [ ] Mute Words
