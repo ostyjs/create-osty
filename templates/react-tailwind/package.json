@@ -12,7 +12,7 @@
   "dependencies": {
     "@nostr-dev-kit/ndk": "^2.5.0",
     "@nostr-dev-kit/ndk-cache-dexie": "^2.2.7",
-    "nostr-hooks": "^2.5.3",
+    "nostr-hooks": "^2.5.4",
     "nostr-tools": "^2.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

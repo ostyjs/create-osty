@@ -4,4 +4,4 @@ type State = {};
 
 type Actions = {};
 
-export const useStore = create<State & Actions>((set) => ({}));
+export const useStore = create<State & Actions>(() => ({}));
