@@ -1,4 +1,4 @@
-import { useProfiles } from 'nostr-hooks';
+import { useNip07, useProfiles } from 'nostr-hooks';
 import { useState } from 'react';
 
 import { useToast } from '@/shared/components/ui/use-toast';
@@ -12,14 +12,27 @@ export const useZapModal = ({ target }: { target: ZapTarget }) => {
   const [comment, setComment] = useState('');
   const [processing, setProcessing] = useState(false);
 
+  useNip07();
+
   const { toast } = useToast();
 
-  useProfiles(target.type == 'event' ? { events: [target.event] } : { users: [target.user] });
+  const { events, users } = useProfiles(
+    target.type == 'event' ? { events: [target.event] } : { users: [target.user] },
+  );
 
-  const name =
-    target.type == 'event' ? target.event.author.profile?.name : target.user.profile?.name;
-  const image =
-    target.type == 'event' ? target.event.author.profile?.image : target.user.profile?.image;
+  let name = '';
+  let image = '';
+  if (target.type == 'event') {
+    if (events.length > 0) {
+      name = events[0].author.profile?.name || '';
+      image = events[0].author.profile?.image || '';
+    }
+  } else {
+    if (users.length > 0) {
+      name = users[0].profile?.name || '';
+      image = users[0].profile?.image || '';
+    }
+  }
 
   const process = (target: ZapTarget) => {
     setProcessing(true);
