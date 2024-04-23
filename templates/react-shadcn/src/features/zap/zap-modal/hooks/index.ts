@@ -1,20 +1,24 @@
-import { useNip07, useProfiles } from 'nostr-hooks';
+import { useNdk, useProfiles } from 'nostr-hooks';
 import { useState } from 'react';
 
 import { useToast } from '@/shared/components/ui/use-toast';
+import { useLoginParam } from '@/shared/hooks';
 
 import { ZAP_AMOUNTS } from '../config';
 import { ZapTarget } from '../types';
 import { payInvoiceByWebln } from '../utils';
+
+// TODO: add support for other payment methods rather than just webln
 
 export const useZapModal = ({ target }: { target: ZapTarget }) => {
   const [selectedAmount, setSelectedAmount] = useState(ZAP_AMOUNTS[0]);
   const [comment, setComment] = useState('');
   const [processing, setProcessing] = useState(false);
 
-  useNip07();
-
   const { toast } = useToast();
+
+  const { ndk } = useNdk();
+  const { openLoginModal } = useLoginParam();
 
   const { events, users } = useProfiles(
     target.type == 'event' ? { events: [target.event] } : { users: [target.user] },
@@ -36,6 +40,13 @@ export const useZapModal = ({ target }: { target: ZapTarget }) => {
 
   const process = (target: ZapTarget) => {
     setProcessing(true);
+
+    if (!ndk.signer) {
+      toast({ description: 'You need to login first!' });
+      openLoginModal();
+      setProcessing(false);
+      return;
+    }
 
     const _target = target.type == 'event' ? target.event : target.user;
 

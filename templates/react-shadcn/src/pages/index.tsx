@@ -1,13 +1,30 @@
-import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { Outlet, createBrowserRouter } from 'react-router-dom';
 
-import { HomePage } from './home';
+import { LoginModal } from '@/features/login-modal';
 
-export const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<HomePage />}>
+const Layout = () => {
+  return (
+    <>
+      <Outlet />
+
+      <LoginModal />
+    </>
+  );
+};
+
+const HomePage = () => import('./home');
+
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
       {
-        // ...
-      }
-    </Route>,
-  ),
-);
+        path: '/',
+        async lazy() {
+          return { Component: (await HomePage()).HomePage };
+        },
+      },
+    ],
+  },
+]);

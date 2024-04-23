@@ -17,6 +17,8 @@ import { ZAP_AMOUNTS } from './config';
 import { useZapModal } from './hooks';
 import { ZapTarget } from './types';
 
+// Check out the `example-components` folder to see how to use this component
+
 export const ZapModal = ({
   children,
   target,
