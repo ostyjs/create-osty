@@ -12,6 +12,7 @@ import {
 } from '@/shared/components/ui/card';
 import { Separator } from '@/shared/components/ui/separator';
 
+import { Login } from './example-components/login';
 import { ZapMe } from './example-components/zap-me';
 
 export const HomePage = () => {
@@ -26,8 +27,9 @@ export const HomePage = () => {
 
           <Separator />
 
-          <CardContent className="mt-6">
+          <CardContent className="mt-6 flex gap-4">
             <ZapMe />
+            <Login />
           </CardContent>
 
           <Separator />
