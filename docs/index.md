@@ -35,3 +35,25 @@ features:
   - title: Scalable
     details: Designed to scale with your needs. Works well for small projects and large projects alike.
 ---
+
+<style>
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #802dd3 30%, #3367b7);
+
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #802dd3 50%, #3367b7 50%);
+  --vp-home-hero-image-filter: blur(44px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+</style>
