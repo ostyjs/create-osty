@@ -4,6 +4,19 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'Osty',
   description: 'Framework for building Nostr web applications',
+
+  /* prettier-ignore */
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['meta', { name: 'theme-color', content: '#5f67ee' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'en' }],
+    ['meta', { property: 'og:title', content: 'Osty | Framework for building Nostr web applications' }],
+    ['meta', { property: 'og:site_name', content: 'Osty' }],
+    ['meta', { property: 'og:image', content: 'https://osty.dev/osty-og.png' }],
+    ['meta', { property: 'og:url', content: 'https://osty.dev/' }],
+  ],
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/osty.png',
