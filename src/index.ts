@@ -10,11 +10,7 @@ const argv = minimist<{
 }>(process.argv.slice(2), { string: ['_'] });
 const cwd = process.cwd();
 
-const TEMPLATES = [
-  'react-shadcn',
-  'react-tailwind',
-  // 'svelte-tailwind',
-];
+const TEMPLATES = ['react-shadcn'];
 
 const renameFiles: Record<string, string | undefined> = {
   _gitignore: '.gitignore',
