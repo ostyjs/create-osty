@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress';
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Osty',
+  base: '/create-osty/',
   description: 'Framework for building Nostr web applications',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
