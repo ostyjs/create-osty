@@ -1,10 +1,10 @@
 {
   "name": "create-osty",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "type": "module",
   "license": "MIT",
   "author": "Sepehr Safari",
-  "description": "Start building on Nostr in seconds with Osty. Fast. Production-Ready. Scalable.",
+  "description": "Framework for building Nostr web applications.",
   "bin": {
     "create-osty": "index.js"
   },
@@ -12,8 +12,10 @@
     "index.js",
     "dist",
     "templates",
+    "!**/docs",
     "!**/node_modules",
-    "!**/package-lock.json"
+    "!**/package-lock.json",
+    "!**/yarn.lock"
   ],
   "scripts": {
     "dev": "unbuild --stub",
