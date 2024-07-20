@@ -1,10 +1,16 @@
-![create-osty](https://socialify.git.ci/ostyjs/create-osty/image?description=1&descriptionEditable=Start%20building%20on%20Nostr%20in%20seconds%20with%20Osty.%20Fast.%20Production-Ready.%20Scalable.%0A%24%20npm%20create%20osty%40latest&font=KoHo&forks=1&issues=1&language=1&logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F157408743&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Dark)
+![create-osty](https://socialify.git.ci/ostyjs/create-osty/image?description=1&descriptionEditable=Framework%20for%20building%20Nostr%20web%20applications.%0A%24%20npm%20create%20osty%40latest&font=KoHo&forks=1&issues=1&language=1&logo=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F157408743&name=1&owner=1&pattern=Floating%20Cogs&pulls=1&stargazers=1&theme=Dark)
 
 # Osty
 
-Start building on Nostr in seconds with Osty. Fast. Production-Ready. Scalable.
+Osty is a free and open-source framework for building web apps on the Nostr protocol. Think of it as a Next.js but for Nostr. It comes with all the essential tools and best practices you need to start building fully customized web apps on Nostr, including UI components, Nostr Widgets, NDK integration, caching, routing, state management, and more.
 
-> **Note**: This project is still in early development. Please be aware that there may be missing features or bugs. If you would like to help us build Osty, please feel free to [contribute](./CONTRIBUTING.md)!
+## Features
+
+- **UI Components:** A comprehensive design system with reusable UI components.
+- **Widgets:** Pre-built widgets like Zap Modal, Login Form, etc.
+- **Templates:** Ready-to-use templates for React. (Vue, and Svelte coming soon)
+- **Core Libraries:** Efficient websockets, caching, routing, and state management solutions.
+- **Best Practices:** Enhanced development experience and team collaboration.
 
 ## Getting Started
 
@@ -34,7 +40,7 @@ $ npm create osty@latest
   ```
 </details>
 
-## Features
+## Why Osty?
 
 - ### Fast
 
@@ -42,7 +48,7 @@ $ npm create osty@latest
 
 - ### Batteries Included
 
-  Osty includes everything you need to build a Nostr application, including Nostr Development Kit, State Management, Routing, UI Components, and more.
+  Osty includes everything you need to build a Nostr application, including Nostr Development Kit, State Management, Routing, UI Components, Customizable Widgets, and more.
 
 - ### Collaborative
 
@@ -52,57 +58,22 @@ $ npm create osty@latest
 
   Osty is designed to scale with your needs. It works well for small projects and large projects alike.
 
-## Roadmap
+## Community
 
-- [ ] Add support for common user interactions with Nostr:
-  - [ ] Media (Images, Videos, etc)
-    - [ ] Parsing media urls within text contents
-    - [ ] Uploading media (nostr.build, void.cat, etc)
-      - [ ] API helpers
-      - [ ] UI components
-  - [ ] Parsing tags and mentions within text contents
-  - [ ] Relays
-    - [ ] Helpers
-    - [ ] UI components
-  - [ ] Zaps
-    - [x] Helpers
-    - [x] UI components
-    - [ ] Zap Presets
-  - [ ] Reactions
-    - [ ] Likes
-    - [ ] Emojis
-    - [ ] Comments
-    - [ ] Reposts
-    - [x] Zaps
-  - [ ] Threads
-    - [ ] Parsing parent and child
-  - [ ] Onboarding Process
-    - [ ] Helpers
-    - [ ] UI components
-  - [ ] Search
-  - [ ] Nostr Wallet Connect (NIP46)
-    - [ ] Helpers
-    - [ ] UI components
-  - [ ] Nostr Connect (NIP47)
-    - [ ] Helpers
-    - [ ] UI components
-  - [ ] Mute Words
-    - [ ] Helpers
-    - [ ] UI components
-  - [ ] Long Form Content (Markdown)
-    - [ ] Helpers for parsing, rendering, and editing
-    - [ ] UI components
+Join the [Osty Community on Telegram 👉 @ostyjs](https://t.me/ostyjs) to stay up to date on the latest news, ask questions, and connect with other developers.
+
+## Support
+
+Osty is an MIT-licensed open-source project. It's an independent project with its ongoing development made possible entirely thanks to the support by the [OpenSats](https://opensats.org) organization.
+If you'd like to support the development of Osty, please consider donating via the following methods:
+
+- Bitcoin Lightning: [https://getalby.com/p/sepehr](https://getalby.com/p/sepehr)
+- Bitcoin: `bc1q76g4zu4nqthdd62lhsk96gjh5eu74y77hkxcx6`
+
+## Contributing
+
+We welcome contributions to Osty. Please read our [contributing guide](./CONTRIBUTING.md) to get started. You can also join the [Osty Community on Telegram 👉 @ostyjs](https://t.me/ostyjs) to connect with other developers and contributors.
 
 ## License
 
 Osty is [MIT licensed](./LICENSE.md).
-
-## Support
-
-Osty is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please consider donating:
-
-- ⚡ Zap sats to [sepehr@getalby.com](sepehr@getalby.com)
-
-## Contributing
-
-We welcome contributions to Osty. Please read our [contributing guide](./CONTRIBUTING.md) to get started.
