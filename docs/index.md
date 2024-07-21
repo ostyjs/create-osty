@@ -20,6 +20,9 @@ hero:
     - theme: alt
       text: GitHub
       link: https://github.com/ostyjs/create-osty
+    - theme: alt
+      text: Community
+      link: https://t.me/ostyjs
 
 features:
   - title: UI Components
