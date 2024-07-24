@@ -4,6 +4,12 @@
 
 Osty is a free and open-source framework for building web apps on the Nostr protocol. Think of it as a Next.js but for Nostr. It comes with all the essential tools and best practices you need to start building fully customized web apps on Nostr, including UI components, Nostr Widgets, NDK integration, caching, routing, state management, and more.
 
+## Supported by
+
+<a href="https://opensats.org" style="display: flex; max-width: 150px; background-color: #fff; padding: 10px; border-radius: 4px">
+  <img src="https://opensats.org/logo.svg" alt="OpenSats" />
+</a>
+
 ## Features
 
 - **UI Components:** A comprehensive design system with reusable UI components.
