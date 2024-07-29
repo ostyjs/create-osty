@@ -1,0 +1,11 @@
+{
+  "names": {
+    "_": "3e294d2fd339bb16a5403a86e3664947dd408c4d87a0066524f8a573ae53ca8e"
+  },
+  "nip46": {
+    "3e294d2fd339bb16a5403a86e3664947dd408c4d87a0066524f8a573ae53ca8e": ["wss://relay.nsec.app"]
+  },
+  "relays": {
+    "3e294d2fd339bb16a5403a86e3664947dd408c4d87a0066524f8a573ae53ca8e": ["wss://nos.lol"]
+  }
+}
