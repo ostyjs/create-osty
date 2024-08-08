@@ -1,7 +1,5 @@
-import { bytesToHex } from '@noble/hashes/utils';
-import { NDKNip07Signer, NDKNip46Signer, NDKPrivateKeySigner } from '@nostr-dev-kit/ndk';
-import { useNdk } from 'nostr-hooks';
-import { decode, nsecEncode } from 'nostr-tools/nip19';
+import { useLogin } from 'nostr-hooks';
+import { nsecEncode } from 'nostr-tools/nip19';
 import { generateSecretKey } from 'nostr-tools/pure';
 import { useState } from 'react';
 
@@ -15,82 +13,59 @@ export const useLoginModal = () => {
 
   const { isLoginModalOpen, closeLoginModal, openLoginModal } = useLoginParam();
 
-  const { ndk, setSigner } = useNdk();
+  const { loginWithExtention, loginWithRemoteSigner, loginWithSecretKey } = useLogin();
 
   const { toast } = useToast();
 
   const handleExtensionSigner = () => {
     setLoading(true);
 
-    const signer = new NDKNip07Signer();
-
-    signer
-      .blockUntilReady()
-      .then((user) => {
-        localStorage.setItem('pubkey', user.pubkey);
-        localStorage.removeItem('seckey');
-
-        setSigner(signer);
-        closeLoginModal();
-      })
-      .catch((e) => {
+    loginWithExtention({
+      onError: (e) => {
         console.error(e);
         toast({ title: 'Error', description: String(e), variant: 'destructive' });
-      })
-      .finally(() => {
         setLoading(false);
-      });
+      },
+      onSuccess: () => {
+        closeLoginModal();
+        setLoading(false);
+      },
+    });
   };
 
   const handleRemoteSigner = () => {
     setLoading(true);
 
-    const signer = new NDKNip46Signer(ndk, nip46Input);
-
-    signer.on('authUrl', (url) => {
-      window.open(url, 'auth', 'width=600,height=600');
-    });
-
-    signer
-      .blockUntilReady()
-      .then((user) => {
-        localStorage.setItem('pubkey', user.pubkey);
-        localStorage.removeItem('seckey');
-
-        setSigner(signer);
-        closeLoginModal();
-      })
-      .catch((e) => {
+    loginWithRemoteSigner({
+      nip46Address: nip46Input,
+      onError: (e) => {
         console.error(e);
         toast({ title: 'Error', description: String(e), variant: 'destructive' });
-      })
-      .finally(() => {
         setLoading(false);
-      });
+      },
+      onSuccess: () => {
+        closeLoginModal();
+        setLoading(false);
+      },
+    });
   };
 
   const handleSecretKeySigner = () => {
     setLoading(true);
 
-    try {
-      const bytes = decode(nsecInput).data as Uint8Array;
-      const hex = bytesToHex(bytes);
-      const signer = new NDKPrivateKeySigner(hex);
-
-      signer.user().then((user) => {
-        localStorage.setItem('pubkey', user.pubkey);
-        localStorage.setItem('seckey', hex);
-      });
-
-      setSigner(signer);
-      closeLoginModal();
-    } catch (e) {
-      console.error(e);
-      toast({ title: 'Error', description: String(e), variant: 'destructive' });
-    }
-
-    setNsecInput('');
-    setLoading(false);
+    loginWithSecretKey({
+      secretKey: nsecInput,
+      onError: (e) => {
+        console.error(e);
+        toast({ title: 'Error', description: String(e), variant: 'destructive' });
+        setLoading(false);
+      },
+      onSuccess: () => {
+        closeLoginModal();
+        setLoading(false);
+        setNsecInput('');
+      },
+    });
   };
 
   const handleSecretKeyGenerate = () => {
