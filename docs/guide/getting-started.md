@@ -43,5 +43,6 @@ Then you can navigate to the project directory and start the development server:
 
 ```sh
 $ cd my-awesome-nostr-client
+$ npm install
 $ npm run dev
 ```
