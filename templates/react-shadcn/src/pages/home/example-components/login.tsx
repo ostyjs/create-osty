@@ -7,11 +7,11 @@ import { useLoginParam } from '@/shared/hooks';
 export const Login = () => {
   const { activeUser } = useActiveUser();
   const { openLoginModal } = useLoginParam();
-  const { reLoginFromLocalStorage, logout } = useLogin();
+  const { loginFromLocalStorage, logout } = useLogin();
 
   useEffect(() => {
-    reLoginFromLocalStorage({});
-  }, []);
+    loginFromLocalStorage({});
+  }, [loginFromLocalStorage]);
 
   if (activeUser) {
     return <Button onClick={() => logout()}>Logout</Button>;
