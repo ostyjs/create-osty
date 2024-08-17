@@ -12,7 +12,7 @@ export const useLoginModal = () => {
   const [nsecInput, setNsecInput] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { isLoginModalOpen, closeLoginModal, openLoginModal } = useLoginModalState();
+  const { isLoginModalOpen, closeLoginModal, setIsLoginModalOpen } = useLoginModalState();
 
   const { loginWithExtention, loginWithRemoteSigner, loginWithSecretKey } = useLogin();
 
@@ -86,7 +86,6 @@ export const useLoginModal = () => {
     handleSecretKeySigner,
     handleSecretKeyGenerate,
     isLoginModalOpen,
-    closeLoginModal,
-    openLoginModal,
+    setIsLoginModalOpen,
   };
 };
