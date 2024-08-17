@@ -1,10 +1,12 @@
 import { useNdk } from 'nostr-hooks';
 
-import { ZapModal } from '@/features/zap';
-
 import { Button } from '@/shared/components/ui/button';
 
+import { useZapModalState } from '@/shared/hooks';
+
 export const ZapMe = () => {
+  const { openZapModal, setZapTarget } = useZapModalState();
+
   const { ndk } = useNdk();
 
   const user = ndk.getUser({
@@ -14,8 +16,13 @@ export const ZapMe = () => {
   if (!ndk) return null;
 
   return (
-    <ZapModal target={{ type: 'user', user }}>
-      <Button>Zap me!</Button>
-    </ZapModal>
+    <Button
+      onClick={() => {
+        setZapTarget(user);
+        openZapModal();
+      }}
+    >
+      Zap me!
+    </Button>
   );
 };

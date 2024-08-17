@@ -23,16 +23,12 @@ export const LoginModal = () => {
     handleSecretKeySigner,
     handleSecretKeyGenerate,
     isLoginModalOpen,
-    openLoginModal,
-    closeLoginModal,
+    setIsLoginModalOpen,
   } = useLoginModal();
 
   return (
     <>
-      <Dialog
-        open={isLoginModalOpen}
-        onOpenChange={(open) => (open ? openLoginModal() : closeLoginModal())}
-      >
+      <Dialog open={isLoginModalOpen} onOpenChange={(open) => setIsLoginModalOpen(open)}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Login</DialogTitle>
