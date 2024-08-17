@@ -1,16 +1,15 @@
-import { useNdk, useProfiles } from 'nostr-hooks';
+import { NDKEvent, NDKTag } from '@nostr-dev-kit/ndk';
+import { useNdk, useProfile } from 'nostr-hooks';
 import { useState } from 'react';
 
 import { useToast } from '@/shared/components/ui/use-toast';
-import { useLoginParam } from '@/shared/hooks';
+
+import { useLoginModalState, useZapModalState } from '@/shared/hooks';
 
 import { ZAP_AMOUNTS } from '../config';
-import { ZapTarget } from '../types';
 import { payInvoiceByWebln } from '../utils';
 
-// TODO: add support for other payment methods rather than just webln
-
-export const useZapModal = ({ target }: { target: ZapTarget }) => {
+export const useZapModal = () => {
   const [selectedAmount, setSelectedAmount] = useState(ZAP_AMOUNTS[0]);
   const [comment, setComment] = useState('');
   const [processing, setProcessing] = useState(false);
@@ -18,27 +17,15 @@ export const useZapModal = ({ target }: { target: ZapTarget }) => {
   const { toast } = useToast();
 
   const { ndk } = useNdk();
-  const { openLoginModal } = useLoginParam();
 
-  const { events, users } = useProfiles(
-    target.type == 'event' ? { events: [target.event] } : { users: [target.user] },
-  );
+  const { openLoginModal } = useLoginModalState();
+  const { zapTarget, setZapTarget, isZapModalOpen, setIsZapModalOpen } = useZapModalState();
 
-  let name = '';
-  let image = '';
-  if (target.type == 'event') {
-    if (events.length > 0) {
-      name = events[0].author.profile?.name || '';
-      image = events[0].author.profile?.image || '';
-    }
-  } else {
-    if (users.length > 0) {
-      name = users[0].profile?.name || '';
-      image = users[0].profile?.image || '';
-    }
-  }
+  const { profile } = useProfile({ pubkey: zapTarget?.pubkey });
 
-  const process = (target: ZapTarget) => {
+  const process = () => {
+    if (!zapTarget) return;
+
     setProcessing(true);
 
     if (!ndk.signer) {
@@ -48,25 +35,28 @@ export const useZapModal = ({ target }: { target: ZapTarget }) => {
       return;
     }
 
-    const _target = target.type == 'event' ? target.event : target.user;
+    const extraTags: NDKTag[] | undefined =
+      zapTarget instanceof NDKEvent ? [['e', zapTarget.id]] : undefined;
 
-    _target
-      .zap(selectedAmount.amount * 1000, comment)
-      .then((invoice) => {
-        invoice &&
-          payInvoiceByWebln(invoice)
-            .then((res) =>
-              res
-                ? toast({ title: 'Success' })
-                : toast({ title: 'Failed', variant: 'destructive' }),
-            )
-            .finally(() => setProcessing(false));
-      })
-      .catch(() => {
+    const ndkUser = ndk.getUser({ pubkey: zapTarget.pubkey });
+    ndkUser.zap(selectedAmount.amount * 1000, comment, extraTags).then((invoice) => {
+      if (typeof invoice === 'string') {
+        payInvoiceByWebln(invoice)
+          .then((res) => {
+            if (res) {
+              toast({ title: 'Successful ⚡️⚡️⚡️' });
+              setZapTarget(undefined);
+              setIsZapModalOpen(false);
+            } else {
+              toast({ title: 'Failed', variant: 'destructive' });
+            }
+          })
+          .finally(() => setProcessing(false));
+      } else {
         toast({ title: 'Failed', variant: 'destructive' });
-
         setProcessing(false);
-      });
+      }
+    });
   };
 
   return {
@@ -74,9 +64,11 @@ export const useZapModal = ({ target }: { target: ZapTarget }) => {
     setSelectedAmount,
     comment,
     setComment,
-    name,
-    image,
     processing,
     process,
+    isZapModalOpen,
+    setIsZapModalOpen,
+    displayName: profile?.displayName,
+    image: profile?.image,
   };
 };

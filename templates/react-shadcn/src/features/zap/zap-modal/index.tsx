@@ -8,49 +8,40 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/shared/components/ui/dialog';
 import { Input } from '@/shared/components/ui/input';
 import { Small } from '@/shared/components/ui/typography/small';
 
 import { ZAP_AMOUNTS } from './config';
 import { useZapModal } from './hooks';
-import { ZapTarget } from './types';
 
 // Check out the `example-components` folder to see how to use this component
 
-export const ZapModal = ({
-  children,
-  target,
-}: {
-  children: React.ReactNode;
-  target: ZapTarget;
-}) => {
+export const ZapModal = () => {
   const {
     comment,
     image,
-    name,
+    displayName,
     selectedAmount,
     setComment,
     setSelectedAmount,
     processing,
     process,
-  } = useZapModal({
-    target,
-  });
+    isZapModalOpen,
+    setIsZapModalOpen,
+  } = useZapModal();
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+    <Dialog open={isZapModalOpen} onOpenChange={(open) => setIsZapModalOpen(open)}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="flex gap-4 items-center">
             <Avatar>
               <AvatarImage src={image} />
-              <AvatarFallback>{name?.[0]}</AvatarFallback>
+              <AvatarFallback>{displayName?.[0]}</AvatarFallback>
             </Avatar>
 
-            <span>Send sats to {name}</span>
+            <span>Send sats to {displayName}</span>
           </DialogTitle>
         </DialogHeader>
 
@@ -102,7 +93,7 @@ export const ZapModal = ({
             className="w-full"
             disabled={!selectedAmount.amount || processing}
             onClick={() => {
-              process(target);
+              process();
             }}
           >
             {processing ? (
