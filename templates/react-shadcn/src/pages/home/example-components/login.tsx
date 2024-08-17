@@ -1,17 +1,14 @@
 import { useActiveUser, useLogin } from 'nostr-hooks';
-import { useEffect } from 'react';
 
 import { Button } from '@/shared/components/ui/button';
-import { useLoginParam } from '@/shared/hooks';
+
+import { useLoginModalState } from '@/shared/hooks';
 
 export const Login = () => {
   const { activeUser } = useActiveUser();
-  const { openLoginModal } = useLoginParam();
-  const { loginFromLocalStorage, logout } = useLogin();
+  const { logout } = useLogin();
 
-  useEffect(() => {
-    loginFromLocalStorage({});
-  }, [loginFromLocalStorage]);
+  const { openLoginModal } = useLoginModalState();
 
   if (activeUser) {
     return <Button onClick={() => logout()}>Logout</Button>;

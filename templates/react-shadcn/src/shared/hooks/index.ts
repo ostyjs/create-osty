@@ -1,1 +1,1 @@
-export { useLoginParam } from './use-login-param';
+export { useLoginModalState } from './use-login-modal-state';
