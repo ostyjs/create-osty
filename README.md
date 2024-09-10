@@ -6,7 +6,7 @@ Osty is a free and open-source framework for building web apps on the Nostr prot
 
 ## Supported by
 
-<a href="https://opensats.org">
+<a href="https://opensats.org/blog/nostr-grants-august-2024#osty">
   <img src="https://opensats.org/logo.svg" alt="OpenSats" width="150px" />
 </a>
 
