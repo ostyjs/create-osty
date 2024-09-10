@@ -14,14 +14,14 @@ export const useLoginModal = () => {
 
   const { isLoginModalOpen, closeLoginModal, setIsLoginModalOpen } = useLoginModalState();
 
-  const { loginWithExtention, loginWithRemoteSigner, loginWithSecretKey } = useLogin();
+  const { loginWithExtension, loginWithRemoteSigner, loginWithSecretKey } = useLogin();
 
   const { toast } = useToast();
 
   const handleExtensionSigner = () => {
     setLoading(true);
 
-    loginWithExtention({
+    loginWithExtension({
       onError: (e) => {
         console.error(e);
         toast({ title: 'Error', description: String(e), variant: 'destructive' });
