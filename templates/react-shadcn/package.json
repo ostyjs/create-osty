@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
-    "@nostr-dev-kit/ndk": "^2.10.0",
-    "@nostr-dev-kit/ndk-cache-dexie": "^2.5.1",
+    "@nostr-dev-kit/ndk": "^2.10.1",
+    "@nostr-dev-kit/ndk-cache-dexie": "^2.5.2",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -45,12 +45,12 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.2.1",
     "lucide-react": "^0.439.0",
     "next-themes": "^0.3.0",
-    "nostr-hooks": "^2.9.11",
-    "nostr-tools": "^2.7.2",
+    "nostr-hooks": "^2.9.12",
+    "nostr-tools": "^2.8.1",
     "react": "^18.3.1",
     "react-day-picker": "^9.0.9",
     "react-dom": "^18.3.1",
@@ -60,9 +60,9 @@
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.2",
+    "vaul": "^1.1.0",
     "zod": "^3.23.8",
-    "zustand": "^4.5.5"
+    "zustand": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.5",
