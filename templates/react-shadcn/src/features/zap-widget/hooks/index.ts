@@ -1,15 +1,16 @@
-import { NDKEvent, NDKTag } from '@nostr-dev-kit/ndk';
-import { useNdk, useProfile } from 'nostr-hooks';
+import { NDKEvent, NDKTag, NDKUser } from '@nostr-dev-kit/ndk';
+import { useProfile } from 'nostr-hooks';
 import { useState } from 'react';
 
 import { useToast } from '@/shared/components/ui/use-toast';
 
-import { useLoginModalState, useZapModalState } from '@/shared/hooks';
+import { useNdk } from '@/shared/hooks';
 
 import { ZAP_AMOUNTS } from '../config';
 import { payInvoiceByWebln } from '../utils';
 
-export const useZapModal = () => {
+export const useZapWidget = (target: NDKEvent | NDKUser | undefined) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState(ZAP_AMOUNTS[0]);
   const [comment, setComment] = useState('');
   const [processing, setProcessing] = useState(false);
@@ -18,35 +19,30 @@ export const useZapModal = () => {
 
   const { ndk } = useNdk();
 
-  const { openLoginModal } = useLoginModalState();
-  const { zapTarget, setZapTarget, isZapModalOpen, setIsZapModalOpen } = useZapModalState();
-
-  const { profile } = useProfile({ pubkey: zapTarget?.pubkey });
+  const { profile } = useProfile(ndk, { pubkey: target?.pubkey });
 
   const process = () => {
-    if (!zapTarget) return;
+    if (!target || !ndk) return;
 
     setProcessing(true);
 
     if (!ndk.signer) {
       toast({ description: 'You need to login first!' });
-      openLoginModal();
       setProcessing(false);
       return;
     }
 
     const extraTags: NDKTag[] | undefined =
-      zapTarget instanceof NDKEvent ? [['e', zapTarget.id]] : undefined;
+      target instanceof NDKEvent ? [['e', target.id]] : undefined;
 
-    const ndkUser = ndk.getUser({ pubkey: zapTarget.pubkey });
+    const ndkUser = ndk.getUser({ pubkey: target.pubkey });
     ndkUser.zap(selectedAmount.amount * 1000, comment, extraTags).then((invoice) => {
       if (typeof invoice === 'string') {
         payInvoiceByWebln(invoice)
           .then((res) => {
             if (res) {
               toast({ title: 'Successful ⚡️⚡️⚡️' });
-              setZapTarget(undefined);
-              setIsZapModalOpen(false);
+              setIsModalOpen(false);
             } else {
               toast({ title: 'Failed', variant: 'destructive' });
             }
@@ -66,8 +62,8 @@ export const useZapModal = () => {
     setComment,
     processing,
     process,
-    isZapModalOpen,
-    setIsZapModalOpen,
+    isModalOpen,
+    setIsModalOpen,
     displayName: profile?.displayName,
     image: profile?.image,
   };

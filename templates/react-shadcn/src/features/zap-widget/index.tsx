@@ -1,3 +1,4 @@
+import { NDKEvent, NDKUser } from '@nostr-dev-kit/ndk';
 import { Loader2 } from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/components/ui/avatar';
@@ -8,16 +9,23 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from '@/shared/components/ui/dialog';
 import { Input } from '@/shared/components/ui/input';
 import { Small } from '@/shared/components/ui/typography/small';
 
 import { ZAP_AMOUNTS } from './config';
-import { useZapModal } from './hooks';
+import { useZapWidget } from './hooks';
 
 // Check out the `example-components` folder to see how to use this component
 
-export const ZapModal = () => {
+export const ZapWidget = ({
+  target,
+  children,
+}: {
+  target: NDKEvent | NDKUser | undefined;
+  children?: React.ReactNode;
+}) => {
   const {
     comment,
     image,
@@ -27,12 +35,14 @@ export const ZapModal = () => {
     setSelectedAmount,
     processing,
     process,
-    isZapModalOpen,
-    setIsZapModalOpen,
-  } = useZapModal();
+    isModalOpen,
+    setIsModalOpen,
+  } = useZapWidget(target);
 
   return (
-    <Dialog open={isZapModalOpen} onOpenChange={(open) => setIsZapModalOpen(open)}>
+    <Dialog open={isModalOpen} onOpenChange={(open) => setIsModalOpen(open)}>
+      <DialogTrigger asChild>{children || <Button>Zap ⚡️</Button>}</DialogTrigger>
+
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="flex gap-4 items-center">
