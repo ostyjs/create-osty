@@ -1,15 +1,9 @@
 import { Outlet, createBrowserRouter } from 'react-router-dom';
 
-import { LoginModal } from '@/features/login-modal';
-import { ZapModal } from '@/features/zap';
-
 const Layout = () => {
   return (
     <>
       <Outlet />
-
-      <LoginModal />
-      <ZapModal />
     </>
   );
 };
