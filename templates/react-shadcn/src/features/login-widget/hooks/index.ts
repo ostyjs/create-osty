@@ -1,20 +1,19 @@
-import { useLogin } from 'nostr-hooks';
 import { nsecEncode } from 'nostr-tools/nip19';
 import { generateSecretKey } from 'nostr-tools/pure';
 import { useState } from 'react';
 
 import { useToast } from '@/shared/components/ui/use-toast';
 
-import { useLoginModalState } from '@/shared/hooks';
+import { useNdk } from '@/shared/hooks';
 
-export const useLoginModal = () => {
+export const useLoginWidget = () => {
   const [nip46Input, setNip46Input] = useState('');
   const [nsecInput, setNsecInput] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { isLoginModalOpen, closeLoginModal, setIsLoginModalOpen } = useLoginModalState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { loginWithExtension, loginWithRemoteSigner, loginWithSecretKey } = useLogin();
+  const { loginWithExtension, loginWithRemoteSigner, loginWithPrivateKey } = useNdk();
 
   const { toast } = useToast();
 
@@ -28,7 +27,7 @@ export const useLoginModal = () => {
         setLoading(false);
       },
       onSuccess: () => {
-        closeLoginModal();
+        setIsModalOpen(false);
         setLoading(false);
       },
     });
@@ -45,31 +44,31 @@ export const useLoginModal = () => {
         setLoading(false);
       },
       onSuccess: () => {
-        closeLoginModal();
+        setIsModalOpen(false);
         setLoading(false);
       },
     });
   };
 
-  const handleSecretKeySigner = () => {
+  const handlePrivateKeySigner = () => {
     setLoading(true);
 
-    loginWithSecretKey({
-      secretKey: nsecInput,
+    loginWithPrivateKey({
+      privateKey: nsecInput,
       onError: (e) => {
         console.error(e);
         toast({ title: 'Error', description: String(e), variant: 'destructive' });
         setLoading(false);
       },
       onSuccess: () => {
-        closeLoginModal();
+        setIsModalOpen(false);
         setLoading(false);
         setNsecInput('');
       },
     });
   };
 
-  const handleSecretKeyGenerate = () => {
+  const handlePrivateKeyGenerate = () => {
     const sk = generateSecretKey();
     const nsec = nsecEncode(sk);
     setNsecInput(nsec);
@@ -83,9 +82,9 @@ export const useLoginModal = () => {
     setNsecInput,
     handleRemoteSigner,
     handleExtensionSigner,
-    handleSecretKeySigner,
-    handleSecretKeyGenerate,
-    isLoginModalOpen,
-    setIsLoginModalOpen,
+    handlePrivateKeySigner,
+    handlePrivateKeyGenerate,
+    isModalOpen,
+    setIsModalOpen,
   };
 };

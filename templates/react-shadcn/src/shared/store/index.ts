@@ -1,32 +1,20 @@
-import { NDKEvent, NDKUser } from '@nostr-dev-kit/ndk';
 import { create } from 'zustand';
 
+/**
+ * This is a sample store that you can use to manage your global state.
+ * Read more about Zustand here: https://github.com/pmndrs/zustand
+ */
+
 type State = {
-  isLoginModalOpen: boolean;
-
-  isZapModalOpen: boolean;
-
-  zapTarget: NDKEvent | NDKUser | undefined;
+  sample: string | undefined;
 };
 
 type Actions = {
-  setIsLoginModalOpen: (isOpen: boolean) => void;
-
-  setIsZapModalOpen: (isOpen: boolean) => void;
-
-  setZapTarget: (target: NDKEvent | NDKUser | undefined) => void;
+  setSample: (sample: string) => void;
 };
 
 export const useStore = create<State & Actions>((set) => ({
-  isLoginModalOpen: false,
+  sample: undefined,
 
-  isZapModalOpen: false,
-
-  zapTarget: undefined,
-
-  setIsLoginModalOpen: (isOpen) => set({ isLoginModalOpen: isOpen }),
-
-  setIsZapModalOpen: (isOpen) => set({ isZapModalOpen: isOpen }),
-
-  setZapTarget: (target) => set({ zapTarget: target }),
+  setSample: (sample) => set({ sample }),
 }));

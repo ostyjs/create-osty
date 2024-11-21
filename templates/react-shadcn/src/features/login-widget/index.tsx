@@ -1,17 +1,23 @@
 import { Loader2 } from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/components/ui/dialog';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/shared/components/ui/dialog';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/components/ui/tabs';
 import { Muted } from '@/shared/components/ui/typography/muted';
 
-import { useLoginModal } from './hooks';
+import { useLoginWidget } from './hooks';
 
 // Check out the `example-components` folder to see how to use this component
 
-export const LoginModal = () => {
+export const LoginWidget = () => {
   const {
     loading,
     nip46Input,
@@ -20,15 +26,19 @@ export const LoginModal = () => {
     setNsecInput,
     handleRemoteSigner,
     handleExtensionSigner,
-    handleSecretKeySigner,
-    handleSecretKeyGenerate,
-    isLoginModalOpen,
-    setIsLoginModalOpen,
-  } = useLoginModal();
+    handlePrivateKeySigner,
+    handlePrivateKeyGenerate,
+    isModalOpen,
+    setIsModalOpen,
+  } = useLoginWidget();
 
   return (
     <>
-      <Dialog open={isLoginModalOpen} onOpenChange={(open) => setIsLoginModalOpen(open)}>
+      <Dialog open={isModalOpen} onOpenChange={(open) => setIsModalOpen(open)}>
+        <DialogTrigger asChild>
+          <Button>Login</Button>
+        </DialogTrigger>
+
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Login</DialogTitle>
@@ -118,10 +128,10 @@ export const LoginModal = () => {
                   placeholder="nsec..."
                   value={nsecInput}
                   onChange={(e) => setNsecInput(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSecretKeySigner()}
+                  onKeyPress={(e) => e.key === 'Enter' && handlePrivateKeySigner()}
                 />
 
-                <Button className="mt-4 w-full" disabled={loading} onClick={handleSecretKeySigner}>
+                <Button className="mt-4 w-full" disabled={loading} onClick={handlePrivateKeySigner}>
                   {loading ? <Loader2 className="animate-spin" /> : `Login With Secret Key`}
                 </Button>
 
@@ -132,7 +142,7 @@ export const LoginModal = () => {
                     <Button
                       variant="link"
                       className="p-0 text-blue-600"
-                      onClick={handleSecretKeyGenerate}
+                      onClick={handlePrivateKeyGenerate}
                     >
                       Generate a new secret key
                     </Button>
