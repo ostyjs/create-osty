@@ -1,5 +1,5 @@
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
-import { useActiveUser } from 'nostr-hooks';
+import { useActiveUser, useNdk } from 'nostr-hooks';
 
 import { ModeToggle } from '@/shared/components/mode-toggle';
 import { Button } from '@/shared/components/ui/button';
@@ -17,11 +17,9 @@ import { LoginWidget } from '@/features/login-widget';
 import { LogoutWidget } from '@/features/logout-widget';
 import { ZapWidget } from '@/features/zap-widget';
 
-import { useNdk } from '@/shared/hooks';
-
 export const HomePage = () => {
   const { ndk } = useNdk();
-  const { activeUser } = useActiveUser(ndk);
+  const { activeUser } = useActiveUser();
 
   const zapTarget = ndk?.getUser({
     pubkey: '3e294d2fd339bb16a5403a86e3664947dd408c4d87a0066524f8a573ae53ca8e', // Sep

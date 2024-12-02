@@ -1,10 +1,8 @@
 import { NDKEvent, NDKTag, NDKUser } from '@nostr-dev-kit/ndk';
-import { useProfile } from 'nostr-hooks';
+import { useNdk, useProfile } from 'nostr-hooks';
 import { useState } from 'react';
 
 import { useToast } from '@/shared/components/ui/use-toast';
-
-import { useNdk } from '@/shared/hooks';
 
 import { ZAP_AMOUNTS } from '../config';
 import { payInvoiceByWebln } from '../utils';
@@ -19,7 +17,7 @@ export const useZapWidget = (target: NDKEvent | NDKUser | undefined) => {
 
   const { ndk } = useNdk();
 
-  const { profile } = useProfile(ndk, { pubkey: target?.pubkey });
+  const { profile } = useProfile({ pubkey: target?.pubkey });
 
   const process = () => {
     if (!target || !ndk) return;
