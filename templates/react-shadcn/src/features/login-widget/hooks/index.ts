@@ -1,10 +1,9 @@
+import { useLogin } from 'nostr-hooks';
 import { nsecEncode } from 'nostr-tools/nip19';
 import { generateSecretKey } from 'nostr-tools/pure';
 import { useState } from 'react';
 
 import { useToast } from '@/shared/components/ui/use-toast';
-
-import { useNdk } from '@/shared/hooks';
 
 export const useLoginWidget = () => {
   const [nip46Input, setNip46Input] = useState('');
@@ -13,7 +12,7 @@ export const useLoginWidget = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { loginWithExtension, loginWithRemoteSigner, loginWithPrivateKey } = useNdk();
+  const { loginWithExtension, loginWithRemoteSigner, loginWithPrivateKey } = useLogin();
 
   const { toast } = useToast();
 

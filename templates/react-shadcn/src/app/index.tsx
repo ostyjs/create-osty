@@ -1,3 +1,4 @@
+import { useLogin, useNdk } from 'nostr-hooks';
 import { useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
 
@@ -8,13 +9,12 @@ import { router } from '@/pages';
 import { ThemeProvider } from '@/shared/components/theme-provider';
 import { Toaster } from '@/shared/components/ui/toaster';
 
-import { useNdk } from '@/shared/hooks';
-
 export const App = () => {
-  const { initNdk, ndk, loginFromLocalStorage } = useNdk();
+  const { initNdk, ndk } = useNdk();
+  const { loginFromLocalStorage } = useLogin();
 
   useEffect(() => {
-    initNdk({ explicitRelayUrls: ['wss://nos.lol'] });
+    initNdk({ explicitRelayUrls: ['wss://nos.lol', 'wss://relay.primal.net'] });
   }, [initNdk]);
 
   useEffect(() => {
