@@ -9,7 +9,7 @@ export const NoteFooter = ({ event }: { event: NDKEvent }) => {
   const [isCommenting, setIsCommenting] = useState(false);
 
   return (
-    <div className="">
+    <>
       <div className="flex items-center justify-between gap-2">
         <NoteCommentBtn onClick={() => setIsCommenting((prev) => !prev)} />
 
@@ -23,6 +23,6 @@ export const NoteFooter = ({ event }: { event: NDKEvent }) => {
       </div>
 
       {isCommenting && <NewNoteWidget replyingToEvent={event} />}
-    </div>
+    </>
   );
 };

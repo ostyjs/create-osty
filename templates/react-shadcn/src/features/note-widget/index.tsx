@@ -12,13 +12,13 @@ export const NoteByEvent = ({ event }: { event: NDKEvent | null | undefined }) =
   }
 
   if (event === null) {
-    return <div>Note not found</div>;
+    return <div className="px-2 border-b">Note not found</div>;
   }
 
   if (event) {
     return (
       <>
-        <div className="border-b">
+        <div className="px-2 border-b">
           <NoteHeader event={event} />
           <NoteContent event={event} />
           <NoteFooter event={event} />

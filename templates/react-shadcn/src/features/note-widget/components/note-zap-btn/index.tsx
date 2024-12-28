@@ -20,7 +20,9 @@ export const NoteZapBtn = ({ event }: { event: NDKEvent }) => {
           size="icon"
           className={cn(isZapedByMe ? 'text-orange-600' : 'opacity-50 hover:opacity-100')}
         >
-          <ZapIcon size={18} />
+          <div>
+            <ZapIcon size={18} />
+          </div>
 
           <span className="ml-1 text-xs">{totalAmount < 1000 ? totalAmount : '1K+'}</span>
         </Button>

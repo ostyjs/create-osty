@@ -18,7 +18,9 @@ export const NoteLikeBtn = ({ event }: { event: NDKEvent }) => {
         className={cn(isLikedByMe ? 'text-red-600' : 'opacity-50 hover:opacity-100')}
         onClick={like}
       >
-        <HeartIcon size={18} />
+        <div>
+          <HeartIcon size={18} />
+        </div>
 
         <span className="ml-1 text-xs">{count < 1000 ? count : '1K+'}</span>
       </Button>
