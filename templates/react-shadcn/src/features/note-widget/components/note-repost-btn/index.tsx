@@ -18,7 +18,9 @@ export const NoteRepostBtn = ({ event }: { event: NDKEvent }) => {
         className={cn(isRepostedByMe ? 'text-green-600' : 'opacity-50 hover:opacity-100')}
         onClick={repost}
       >
-        <Repeat2Icon size={18} />
+        <div>
+          <Repeat2Icon size={18} />
+        </div>
 
         <span className="ml-1 text-xs">{count < 100 ? count : '100+'}</span>
       </Button>

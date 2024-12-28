@@ -22,7 +22,7 @@ export const NotesFeedWidget = () => {
         <NewNoteWidget />
       </div>
 
-      <div className="py-2 border-b">
+      <div className="p-2 border-b">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="sm">
@@ -46,7 +46,7 @@ export const NotesFeedWidget = () => {
           ))}
         </div>
       ) : (
-        <div className="pt-2">
+        <div className="pt-2 px-2">
           <p>No events found. Follow some users to see their notes here.</p>
         </div>
       )}
