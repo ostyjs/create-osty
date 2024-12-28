@@ -17,7 +17,7 @@ import { NoteParentPreview } from '../note-parent-preview';
 import { useNoteHeader } from './hooks';
 
 export const NoteHeader = ({ event }: { event: NDKEvent }) => {
-  const { copy, navigate, profile } = useNoteHeader(event.pubkey);
+  const { copy, navigate, profile, nevent } = useNoteHeader(event);
 
   return (
     <>
@@ -68,7 +68,7 @@ export const NoteHeader = ({ event }: { event: NDKEvent }) => {
                 Reactions
               </DropdownMenuItem>
 
-              <DropdownMenuItem onClick={() => copy(window.location.href)}>
+              <DropdownMenuItem onClick={() => copy(`${window.location.origin}/note/${nevent}`)}>
                 <LinkIcon className="w-4 h-4 mr-2" />
                 Copy note link
               </DropdownMenuItem>
@@ -78,7 +78,7 @@ export const NoteHeader = ({ event }: { event: NDKEvent }) => {
                 Copy note text
               </DropdownMenuItem>
 
-              <DropdownMenuItem onClick={() => copy(event.id)}>
+              <DropdownMenuItem onClick={() => copy(nevent)}>
                 <TagIcon className="w-4 h-4 mr-2" />
                 Copy note ID
               </DropdownMenuItem>
