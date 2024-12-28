@@ -28,9 +28,9 @@ features:
   - title: UI Components
     details: A comprehensive design system with reusable UI components.
   - title: Widgets
-    details: Pre-built widgets like Zap Modal, Login Form, etc.
+    details: Pre-built widgets like Zap Modal, Login Form, User Profile, Notes, and more.
   - title: Templates
-    details: Ready-to-use templates for React. (Vue, and Svelte coming soon)
+    details: Ready-to-use templates for different social media platforms.
   - title: Core Libraries
     details: Efficient websockets, caching, routing, and state management solutions.
   - title: Best Practices
