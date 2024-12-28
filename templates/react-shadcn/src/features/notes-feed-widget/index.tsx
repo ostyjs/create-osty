@@ -7,6 +7,8 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/components/ui/dropdown-menu';
 
+import { Spinner } from '@/shared/components/spinner';
+
 import { NewNoteWidget } from '@/features/new-note-widget';
 import { NoteByEvent } from '@/features/note-widget';
 
@@ -14,7 +16,7 @@ import { useNotesFeedWidget } from './hooks';
 import { NoteFeedView } from './types';
 
 export const NotesFeedWidget = () => {
-  const { processedEvents, hasMore, loadMore, setView, view } = useNotesFeedWidget();
+  const { processedEvents, hasMore, loadMore, setView, view, isLoading } = useNotesFeedWidget();
 
   return (
     <>
@@ -39,7 +41,9 @@ export const NotesFeedWidget = () => {
         </DropdownMenu>
       </div>
 
-      {processedEvents ? (
+      {isLoading ? (
+        <Spinner />
+      ) : processedEvents ? (
         <div className="pt-2 flex flex-col gap-2">
           {processedEvents.map((event) => (
             <NoteByEvent key={event.id} event={event} />
