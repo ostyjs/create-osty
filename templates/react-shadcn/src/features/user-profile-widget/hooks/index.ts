@@ -1,5 +1,5 @@
 import { NDKUser } from '@nostr-dev-kit/ndk';
-import { useProfile } from 'nostr-hooks';
+import { useRealtimeProfile } from 'nostr-hooks';
 import { useState } from 'react';
 
 import { ProfileView } from '../types';
@@ -14,7 +14,7 @@ export const useUserProfileWidget = ({
   const [view, setView] = useState<ProfileView>('notes');
   const [editMode, setEditMode] = useState(initialEditMode);
 
-  const { profile } = useProfile({ pubkey: user.pubkey });
+  const { profile } = useRealtimeProfile(user.pubkey);
 
   return { profile, view, setView, editMode, setEditMode };
 };
