@@ -17,13 +17,13 @@ import { NoteParentPreview } from '../note-parent-preview';
 import { useNoteHeader } from './hooks';
 
 export const NoteHeader = ({ event }: { event: NDKEvent }) => {
-  const { copy, navigate, profile, nevent } = useNoteHeader(event);
+  const { copy, navigate, profile, nevent, ref } = useNoteHeader(event);
 
   return (
     <>
-      <div className="pb-2 flex justify-between gap-2">
+      <div className="pb-2 flex justify-between gap-2" ref={ref}>
         <Avatar
-          className="bg-muted hover:cursor-pointer"
+          className="bg-foreground/10 hover:cursor-pointer"
           onClick={() => navigate(`/profile/${new NDKUser({ pubkey: event.pubkey }).npub}`)}
         >
           <AvatarImage src={profile?.image} alt={profile?.name} />

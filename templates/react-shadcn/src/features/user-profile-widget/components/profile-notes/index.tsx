@@ -2,6 +2,8 @@ import { NDKUser } from '@nostr-dev-kit/ndk';
 
 import { Button } from '@/shared/components/ui/button';
 
+import { cn } from '@/shared/utils';
+
 import { NoteByEvent } from '@/features/note-widget';
 
 import { useProfileNotes } from './hooks';
@@ -24,7 +26,11 @@ export const ProfileNotes = ({
   return (
     <>
       <div className="flex flex-col gap-2">
-        {processedEvents?.map((event) => <NoteByEvent key={event.id} event={event} />)}
+        {processedEvents?.map((event, i) => (
+          <div className={cn({ 'border-b': i !== processedEvents.length - 1 })}>
+            <NoteByEvent key={event.id} event={event} />
+          </div>
+        ))}
       </div>
 
       {hasMore && (

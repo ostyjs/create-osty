@@ -9,8 +9,8 @@ import { ZapWidget } from '@/features/zap-widget';
 
 import { useNoteZapBtn } from './hooks';
 
-export const NoteZapBtn = ({ event }: { event: NDKEvent }) => {
-  const { totalAmount, isZapedByMe } = useNoteZapBtn(event);
+export const NoteZapBtn = ({ event, inView }: { event: NDKEvent; inView: boolean }) => {
+  const { totalAmount, isZapedByMe } = useNoteZapBtn(inView ? event : undefined);
 
   return (
     <>

@@ -2,7 +2,7 @@ import { NDKEvent, NDKKind, zapInvoiceFromEvent } from '@nostr-dev-kit/ndk';
 import { useActiveUser, useSubscription } from 'nostr-hooks';
 import { useEffect, useMemo } from 'react';
 
-export const useNoteZapBtn = (event: NDKEvent) => {
+export const useNoteZapBtn = (event: NDKEvent | undefined) => {
   const { count, totalAmount } = useAnybodyZaps(event);
 
   const { isZapedByMe } = useMyZap(event);
@@ -10,27 +10,29 @@ export const useNoteZapBtn = (event: NDKEvent) => {
   return { count, isZapedByMe, totalAmount };
 };
 
-const useMyZap = (event: NDKEvent) => {
+const useMyZap = (event: NDKEvent | undefined) => {
   const { activeUser } = useActiveUser();
 
-  const subId = activeUser ? `note-my-zaps-${event.id}` : undefined;
+  const subId = activeUser && event ? `note-my-zaps-${event.id}` : undefined;
 
   const { createSubscription, events } = useSubscription(subId);
 
   useEffect(() => {
     activeUser &&
+      event &&
       createSubscription({
         filters: [
           { kinds: [NDKKind.Zap], '#e': [event.id], authors: [activeUser.pubkey], limit: 1 },
         ],
+        opts: { groupableDelay: 500 },
       });
-  }, [createSubscription]);
+  }, [createSubscription, activeUser, event]);
 
   return { isZapedByMe: events && events.length > 0 };
 };
 
-const useAnybodyZaps = (event: NDKEvent) => {
-  const subId = `note-zaps-${event.id}`;
+const useAnybodyZaps = (event: NDKEvent | undefined) => {
+  const subId = event ? `note-zaps-${event.id}` : undefined;
 
   const { createSubscription, events } = useSubscription(subId);
 
@@ -44,8 +46,12 @@ const useAnybodyZaps = (event: NDKEvent) => {
   );
 
   useEffect(() => {
-    createSubscription({ filters: [{ kinds: [NDKKind.Zap], '#e': [event.id], limit: 1000 }] });
-  }, [createSubscription]);
+    event &&
+      createSubscription({
+        filters: [{ kinds: [NDKKind.Zap], '#e': [event.id], limit: 1000 }],
+        opts: { groupableDelay: 500 },
+      });
+  }, [createSubscription, event]);
 
   return { count, totalAmount };
 };

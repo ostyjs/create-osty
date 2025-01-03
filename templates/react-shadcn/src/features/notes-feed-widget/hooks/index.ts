@@ -39,8 +39,13 @@ export const useNotesFeedWidget = () => {
 
     createSubscription({
       filters: [
-        { kinds: [1], limit: 20, authors: [activeUser.pubkey, ...follows.map((u) => u.pubkey)] },
+        {
+          kinds: [1],
+          limit: 10,
+          authors: [activeUser.pubkey, ...follows.map((u) => u.pubkey)],
+        },
       ],
+      opts: { groupableDelay: 500 },
     });
   }, [createSubscription, follows, activeUser]);
 

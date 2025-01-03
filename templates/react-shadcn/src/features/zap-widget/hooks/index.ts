@@ -1,5 +1,5 @@
 import { NDKEvent, NDKTag, NDKUser } from '@nostr-dev-kit/ndk';
-import { useNdk, useProfile } from 'nostr-hooks';
+import { useNdk, useRealtimeProfile } from 'nostr-hooks';
 import { useState } from 'react';
 
 import { useToast } from '@/shared/components/ui/use-toast';
@@ -17,7 +17,7 @@ export const useZapWidget = (target: NDKEvent | NDKUser | undefined) => {
 
   const { ndk } = useNdk();
 
-  const { profile } = useProfile({ pubkey: target?.pubkey });
+  const { profile } = useRealtimeProfile(target?.pubkey);
 
   const process = () => {
     if (!target || !ndk) return;
