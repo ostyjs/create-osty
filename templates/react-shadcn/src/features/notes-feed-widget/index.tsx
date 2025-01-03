@@ -9,6 +9,8 @@ import {
 
 import { Spinner } from '@/shared/components/spinner';
 
+import { cn } from '@/shared/utils';
+
 import { NewNoteWidget } from '@/features/new-note-widget';
 import { NoteByEvent } from '@/features/note-widget';
 
@@ -45,8 +47,10 @@ export const NotesFeedWidget = () => {
         <Spinner />
       ) : processedEvents ? (
         <div className="pt-2 flex flex-col gap-2">
-          {processedEvents.map((event) => (
-            <NoteByEvent key={event.id} event={event} />
+          {processedEvents.map((event, i) => (
+            <div className={cn({ 'border-b': i !== processedEvents.length - 1 })}>
+              <NoteByEvent key={event.id} event={event} />
+            </div>
           ))}
         </div>
       ) : (

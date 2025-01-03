@@ -14,7 +14,9 @@ export const NewNoteWidget = ({ replyingToEvent }: { replyingToEvent?: NDKEvent 
 
   return (
     <>
-      <div className={cn('p-2 bg-muted flex flex-col gap-2', replyingToEvent && '-mx-2 pl-6')}>
+      <div
+        className={cn('p-2 bg-foreground/10 flex flex-col gap-2', replyingToEvent && '-mx-2 pl-4')}
+      >
         <div className="flex gap-2">
           {replyingToEvent && (
             <div className="pt-2 opacity-50">
