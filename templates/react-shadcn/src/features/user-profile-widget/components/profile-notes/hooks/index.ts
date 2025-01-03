@@ -38,7 +38,10 @@ export const useProfileNotes = ({
       return;
     }
 
-    createSubscription({ filters: [{ authors: [user.pubkey], kinds: [1], limit: 50 }] });
+    createSubscription({
+      filters: [{ authors: [user.pubkey], kinds: [1], limit: 50 }],
+      opts: { groupableDelay: 500 },
+    });
   }, [createSubscription, user.pubkey]);
 
   return { processedEvents, loadMore, hasMore, isLoading };
