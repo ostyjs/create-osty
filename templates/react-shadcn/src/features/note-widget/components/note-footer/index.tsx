@@ -1,28 +1,39 @@
 import { NDKEvent } from '@nostr-dev-kit/ndk';
-import { useState } from 'react';
 
-import { NewNoteWidget } from '@/features/new-note-widget';
+import { NoteCommentsWidget } from '@/features/note-comments-widget';
 
-import { NoteBookmarkBtn, NoteCommentBtn, NoteLikeBtn, NoteRepostBtn, NoteZapBtn } from '..';
+import {
+  NoteBookmarkBtn,
+  NoteCommentBtn,
+  NoteLikeBtn,
+  NoteRepostBtn,
+  NoteZapBtn,
+} from '@/features/note-widget/components';
+
+import { useNoteFooter } from './hooks';
 
 export const NoteFooter = ({ event }: { event: NDKEvent }) => {
-  const [isCommenting, setIsCommenting] = useState(false);
+  const { inView, ref, setShowingComments, showingComments } = useNoteFooter();
 
   return (
     <>
-      <div className="flex items-center justify-between gap-2">
-        <NoteCommentBtn onClick={() => setIsCommenting((prev) => !prev)} />
+      <div className="flex items-center justify-between gap-2" ref={ref}>
+        <NoteCommentBtn
+          onClick={() => setShowingComments((prev) => !prev)}
+          event={event}
+          inView={inView}
+        />
 
-        <NoteZapBtn event={event} />
+        <NoteZapBtn event={event} inView={inView} />
 
-        <NoteLikeBtn event={event} />
+        <NoteLikeBtn event={event} inView={inView} />
 
-        <NoteRepostBtn event={event} />
+        <NoteRepostBtn event={event} inView={inView} />
 
-        <NoteBookmarkBtn event={event} />
+        <NoteBookmarkBtn event={event} inView={inView} />
       </div>
 
-      {isCommenting && <NewNoteWidget replyingToEvent={event} />}
+      {showingComments && <NoteCommentsWidget event={event} />}
     </>
   );
 };

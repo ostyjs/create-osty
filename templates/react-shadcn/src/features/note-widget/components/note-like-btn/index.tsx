@@ -7,8 +7,8 @@ import { cn } from '@/shared/utils';
 
 import { useNoteLikeBtn } from './hooks';
 
-export const NoteLikeBtn = ({ event }: { event: NDKEvent }) => {
-  const { count, isLikedByMe, like } = useNoteLikeBtn(event);
+export const NoteLikeBtn = ({ event, inView }: { event: NDKEvent; inView: boolean }) => {
+  const { count, isLikedByMe, like } = useNoteLikeBtn(inView ? event : undefined);
 
   return (
     <>

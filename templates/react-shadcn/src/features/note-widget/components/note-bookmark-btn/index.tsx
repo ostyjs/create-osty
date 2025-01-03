@@ -7,8 +7,8 @@ import { cn } from '@/shared/utils';
 
 import { useNoteBookmarkBtn } from './hooks';
 
-export const NoteBookmarkBtn = ({ event }: { event: NDKEvent }) => {
-  const { isBookmarkedByMe, bookmark, unbookmark } = useNoteBookmarkBtn(event);
+export const NoteBookmarkBtn = ({ event, inView }: { event: NDKEvent; inView: boolean }) => {
+  const { isBookmarkedByMe, bookmark, unbookmark } = useNoteBookmarkBtn(inView ? event : undefined);
 
   return (
     <>

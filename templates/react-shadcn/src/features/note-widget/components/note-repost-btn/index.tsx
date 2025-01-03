@@ -7,8 +7,8 @@ import { cn } from '@/shared/utils';
 
 import { useNoteRepostBtn } from './hooks';
 
-export const NoteRepostBtn = ({ event }: { event: NDKEvent }) => {
-  const { count, isRepostedByMe, repost } = useNoteRepostBtn(event);
+export const NoteRepostBtn = ({ event, inView }: { event: NDKEvent; inView: boolean }) => {
+  const { count, isRepostedByMe, repost } = useNoteRepostBtn(inView ? event : undefined);
 
   return (
     <>

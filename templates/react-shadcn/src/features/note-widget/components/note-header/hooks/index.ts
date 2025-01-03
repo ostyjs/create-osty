@@ -1,14 +1,20 @@
 import { NDKEvent } from '@nostr-dev-kit/ndk';
-import { useProfile } from 'nostr-hooks';
+import { useRealtimeProfile } from 'nostr-hooks';
 import { neventEncode } from 'nostr-tools/nip19';
 import { useMemo } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { useNavigate } from 'react-router-dom';
 import { useCopyToClipboard } from 'usehooks-ts';
 
 export const useNoteHeader = (event: NDKEvent) => {
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
+
   const [, copy] = useCopyToClipboard();
 
-  const { profile } = useProfile({ pubkey: event.pubkey });
+  const { profile } = useRealtimeProfile(inView ? event.pubkey : undefined);
 
   const navigate = useNavigate();
 
@@ -24,6 +30,7 @@ export const useNoteHeader = (event: NDKEvent) => {
   );
 
   return {
+    ref,
     profile,
     copy,
     navigate,
