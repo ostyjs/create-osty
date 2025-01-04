@@ -31,11 +31,19 @@ export const useNewNoteWidget = ({
       const rootTag = replyingToEvent.tags.find((tag) => tag.length > 3 && tag[3] === 'root');
 
       if (rootTag) {
-        e.tags.push(['e', rootTag[1], '', 'root']);
+        e.tags.push(['e', rootTag[1], rootTag[2] || '', 'root']);
         e.tags.push(['e', replyingToEvent.id, '', 'reply']);
       } else {
         e.tags.push(['e', replyingToEvent.id, '', 'root']);
       }
+
+      replyingToEvent.tags.forEach((tag) => {
+        if (tag.length > 0 && tag[0] === 'p') {
+          e.tags.push(tag);
+        }
+      });
+
+      e.tags.push(['p', replyingToEvent.pubkey]);
     }
 
     e.publish()
