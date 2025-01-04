@@ -1,6 +1,6 @@
-import { NDKEvent, NDKTag, NDKUser } from '@nostr-dev-kit/ndk';
+import { LnPayCb, NDKEvent, NDKTag, NDKUser, NDKZapper } from '@nostr-dev-kit/ndk';
 import { useNdk, useRealtimeProfile } from 'nostr-hooks';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { useToast } from '@/shared/components/ui/use-toast';
 
@@ -19,7 +19,7 @@ export const useZapWidget = (target: NDKEvent | NDKUser | undefined) => {
 
   const { profile } = useRealtimeProfile(target?.pubkey);
 
-  const process = () => {
+  const process = useCallback(() => {
     if (!target || !ndk) return;
 
     setProcessing(true);
@@ -33,25 +33,30 @@ export const useZapWidget = (target: NDKEvent | NDKUser | undefined) => {
     const extraTags: NDKTag[] | undefined =
       target instanceof NDKEvent ? [['e', target.id]] : undefined;
 
-    const ndkUser = ndk.getUser({ pubkey: target.pubkey });
-    ndkUser.zap(selectedAmount.amount * 1000, comment, extraTags).then((invoice) => {
-      if (typeof invoice === 'string') {
-        payInvoiceByWebln(invoice)
-          .then((res) => {
-            if (res) {
-              toast({ title: 'Successful ⚡️⚡️⚡️' });
-              setIsModalOpen(false);
-            } else {
-              toast({ title: 'Failed', variant: 'destructive' });
-            }
-          })
-          .finally(() => setProcessing(false));
+    const lnPay: LnPayCb = async ({ pr }) => {
+      const res = await payInvoiceByWebln(pr);
+
+      if (res) {
+        toast({ title: 'Successful ⚡️⚡️⚡️' });
+        setIsModalOpen(false);
       } else {
         toast({ title: 'Failed', variant: 'destructive' });
-        setProcessing(false);
       }
+
+      setProcessing(false);
+
+      return res;
+    };
+
+    const zapper = new NDKZapper(target, selectedAmount.amount * 1000, 'msat', {
+      comment,
+      ndk,
+      lnPay,
+      tags: extraTags,
     });
-  };
+
+    zapper.zap();
+  }, [target, ndk, selectedAmount, comment, toast, setIsModalOpen, setProcessing]);
 
   return {
     selectedAmount,

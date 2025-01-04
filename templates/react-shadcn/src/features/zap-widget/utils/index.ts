@@ -1,4 +1,8 @@
-export const payInvoiceByWebln = async (invoice: string): Promise<boolean> => {
+import { NDKPaymentConfirmationLN } from '@nostr-dev-kit/ndk';
+
+export const payInvoiceByWebln = async (
+  invoice: string,
+): Promise<NDKPaymentConfirmationLN | undefined> => {
   const { webln } = window as { webln?: any };
 
   if (webln) {
@@ -6,16 +10,14 @@ export const payInvoiceByWebln = async (invoice: string): Promise<boolean> => {
       await webln.enable();
 
       try {
-        await webln.sendPayment(invoice);
-
-        return true;
+        return (await webln.sendPayment(invoice)) as NDKPaymentConfirmationLN;
       } catch (_) {
-        return false;
+        return undefined;
       }
     } catch (_) {
-      return false;
+      return undefined;
     }
   } else {
-    return false;
+    return undefined;
   }
 };
