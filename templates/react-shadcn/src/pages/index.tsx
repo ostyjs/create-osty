@@ -23,7 +23,6 @@ const Layout = () => {
         <div className="flex justify-between items-center border-b p-2">
           <div>
             <h2>Osty</h2>
-            <p>Start building on Nostr in seconds with Osty</p>
           </div>
 
           <div>{activeUser ? <ActiveUserWidget /> : <LoginWidget />}</div>
