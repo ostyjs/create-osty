@@ -33,7 +33,7 @@ export const useNotesFeedWidget = () => {
   );
 
   useEffect(() => {
-    if (!activeUser || !follows) {
+    if (!activeUser || follows === undefined) {
       return;
     }
 
@@ -42,7 +42,7 @@ export const useNotesFeedWidget = () => {
         {
           kinds: [1],
           limit: 10,
-          authors: [activeUser.pubkey, ...follows.map((u) => u.pubkey)],
+          authors: [activeUser.pubkey, ...(follows || []).map((u) => u.pubkey)],
         },
       ],
       opts: { groupableDelay: 500 },
