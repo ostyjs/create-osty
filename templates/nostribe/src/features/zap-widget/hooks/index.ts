@@ -1,4 +1,4 @@
-import { LnPayCb, NDKEvent, NDKTag, NDKUser, NDKZapper } from '@nostr-dev-kit/ndk';
+import { LnPayCb, NDKEvent, NDKUser, NDKZapper } from '@nostr-dev-kit/ndk';
 import { useNdk, useRealtimeProfile } from 'nostr-hooks';
 import { useCallback, useState } from 'react';
 
@@ -30,30 +30,34 @@ export const useZapWidget = (target: NDKEvent | NDKUser | undefined) => {
       return;
     }
 
-    const extraTags: NDKTag[] | undefined =
-      target instanceof NDKEvent ? [['e', target.id]] : undefined;
-
     const lnPay: LnPayCb = async ({ pr }) => {
-      const res = await payInvoiceByWebln(pr);
+      try {
+        const res = await payInvoiceByWebln(pr);
 
-      if (res) {
-        toast({ title: 'Successful ⚡️⚡️⚡️' });
-        setIsModalOpen(false);
-      } else {
-        toast({ title: 'Failed', variant: 'destructive' });
-      }
+        if (res) {
+          toast({ title: 'Successful ⚡️⚡️⚡️' });
+          setIsModalOpen(false);
+        } else {
+          toast({ title: 'Failed', variant: 'destructive' });
+        }
+
+        return res;
+      } catch (_) {}
 
       setProcessing(false);
-
-      return res;
     };
 
-    const zapper = new NDKZapper(target, selectedAmount.amount * 1000, 'msat', {
-      comment,
-      ndk,
-      lnPay,
-      tags: extraTags,
-    });
+    const zapper = new NDKZapper(
+      new NDKUser({ pubkey: target.pubkey }),
+      selectedAmount.amount * 1000,
+      'msat',
+      {
+        comment,
+        ndk,
+        lnPay,
+        tags: target instanceof NDKEvent ? [['e', target.id]] : undefined,
+      },
+    );
 
     zapper.zap();
   }, [target, ndk, selectedAmount, comment, toast, setIsModalOpen, setProcessing]);
