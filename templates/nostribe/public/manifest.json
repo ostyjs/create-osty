@@ -1,7 +1,7 @@
 {
-  "name": "osty",
-  "short_name": "osty",
-  "description": "osty",
+  "name": "nostribe",
+  "short_name": "nostribe",
+  "description": "nostribe",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000",

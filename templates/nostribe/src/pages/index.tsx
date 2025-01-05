@@ -21,9 +21,9 @@ const Layout = () => {
     <>
       <div className="flex flex-col justify-between h-full w-full max-w-screen-md mx-auto">
         <div className="flex justify-between items-center border-b p-2">
-          <div>
-            <h2>Osty</h2>
-          </div>
+          <Link to="/">
+            <h2>Nostribe</h2>
+          </Link>
 
           <div>{activeUser ? <ActiveUserWidget /> : <LoginWidget />}</div>
         </div>
@@ -34,12 +34,10 @@ const Layout = () => {
 
         <div className="p-2 flex items-center justify-between">
           <div className="text-xs flex items-center gap-1">
-            <span>Made with</span>
-            <span className="text-red-500">💜</span>
-            <span>by</span>
-            <Link to={`/profile/${sepehr?.npub}`} className="hover:underline">
-              Sepehr
-            </Link>
+            <span>Powered by</span>
+            <a href="https://osty.dev" target="_blank" rel="noreferrer">
+              Osty
+            </a>
           </div>
 
           <div className="flex items-center gap-2">

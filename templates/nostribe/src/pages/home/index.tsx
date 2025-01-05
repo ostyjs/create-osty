@@ -11,7 +11,7 @@ export const HomePage = () => {
         <NotesFeedWidget />
       ) : (
         <div className="flex flex-col h-full w-full items-center justify-center">
-          <h3>Welcome to Osty!</h3>
+          <h3>Welcome to Nostribe!</h3>
           <p>Log-in to view and create notes</p>
         </div>
       )}
