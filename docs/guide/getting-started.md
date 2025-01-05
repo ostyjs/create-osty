@@ -34,7 +34,7 @@ After running the command above, you will be prompted to enter the project name 
 │ my-awesome-nostr-client
 │
 ◆ Select a template:
-│ ● react-shadcn
+│ ● nostribe
 └
 ```
 

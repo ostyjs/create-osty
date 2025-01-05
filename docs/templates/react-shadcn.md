@@ -1,3 +1,3 @@
-# React + Shadcn
+# Nostribe
 
-This template is designed to help developers take Nostr applications from concept to completion as quickly as possible.
+This template is designed to help developers create a feature-rich Nostr client with ease.

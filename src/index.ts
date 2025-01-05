@@ -1,7 +1,7 @@
+import minimist from 'minimist';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import minimist from 'minimist';
 import prompts from 'prompts';
 
 const argv = minimist<{
@@ -10,7 +10,7 @@ const argv = minimist<{
 }>(process.argv.slice(2), { string: ['_'] });
 const cwd = process.cwd();
 
-const TEMPLATES = ['react-shadcn'];
+const TEMPLATES = ['nostribe'];
 
 const renameFiles: Record<string, string | undefined> = {
   _gitignore: '.gitignore',

@@ -42,7 +42,7 @@ export default defineConfig({
           text: 'Templates',
           items: [
             { text: 'What are templates?', link: '/templates/what-are-templates' },
-            { text: 'React + Shadcn', link: '/templates/react-shadcn' },
+            { text: 'Nostribe', link: '/templates/nostribe' },
           ],
         },
       ],
