@@ -48,8 +48,8 @@ export const NotesFeedWidget = () => {
       ) : processedEvents ? (
         <div className="pt-2 flex flex-col gap-2">
           {processedEvents.map((event, i) => (
-            <div className={cn({ 'border-b': i !== processedEvents.length - 1 })}>
-              <NoteByEvent key={event.id} event={event} />
+            <div key={event.id} className={cn({ 'border-b': i !== processedEvents.length - 1 })}>
+              <NoteByEvent event={event} />
             </div>
           ))}
         </div>
@@ -61,7 +61,7 @@ export const NotesFeedWidget = () => {
 
       {hasMore && (
         <div className="py-4 flex justify-center">
-          <Button variant="secondary" onClick={() => loadMore(50)} className="w-full">
+          <Button variant="secondary" onClick={() => loadMore(100)} className="w-full">
             Load more
           </Button>
         </div>

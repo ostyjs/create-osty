@@ -14,7 +14,7 @@ export const NoteZapBtn = ({ event, inView }: { event: NDKEvent; inView: boolean
 
   return (
     <>
-      <ZapWidget target={event}>
+      <ZapWidget target={inView ? event : undefined}>
         <Button
           variant="link"
           size="icon"
