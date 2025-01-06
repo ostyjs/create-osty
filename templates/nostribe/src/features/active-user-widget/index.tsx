@@ -11,6 +11,8 @@ import {
   DropdownMenuTrigger,
 } from '@/shared/components/ui/dropdown-menu';
 
+import { ellipsis } from '@/shared/utils';
+
 export const ActiveUserWidget = () => {
   const { activeUser } = useActiveUser();
   const { profile } = useRealtimeProfile(activeUser?.pubkey);
@@ -18,17 +20,30 @@ export const ActiveUserWidget = () => {
 
   const navigate = useNavigate();
 
+  if (!activeUser) {
+    return null;
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Avatar>
-          <AvatarImage src={profile?.image} alt={profile?.name} />
-          <AvatarFallback className="bg-muted" />
-        </Avatar>
+        <div className="flex items-center gap-2 cursor-pointer bg-secondary rounded-full px-2 py-1">
+          <Avatar>
+            <AvatarImage src={profile?.image} alt={profile?.name} />
+            <AvatarFallback className="bg-background/50" />
+          </Avatar>
+
+          <div className="text-start pr-2 hidden lg:block">
+            {profile?.name && <div className="text-sm">{profile.name}</div>}
+            <div className="text-xs text-primary/70">
+              {profile?.nip05 || ellipsis(activeUser.npub, 10)}
+            </div>
+          </div>
+        </div>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" sideOffset={8}>
-        <DropdownMenuItem onClick={() => navigate(`/profile/${activeUser?.npub}`)}>
+        <DropdownMenuItem onClick={() => navigate(`/profile/${activeUser.npub}`)}>
           <UserIcon className="w-4 h-4 mr-2" />
           Profile
         </DropdownMenuItem>
