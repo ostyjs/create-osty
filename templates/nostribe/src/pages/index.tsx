@@ -1,6 +1,8 @@
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import {
   ArrowRightIcon,
+  BellIcon,
+  BookmarkIcon,
   CoffeeIcon,
   CompassIcon,
   HomeIcon,
@@ -60,10 +62,7 @@ const Layout = () => {
               <span className="hidden lg:block">Home</span>
             </Link>
 
-            <Link
-              to="/explore"
-              className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted"
-            >
+            <Link to="/" className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted">
               <div>
                 <CompassIcon size={24} />
               </div>
@@ -71,15 +70,28 @@ const Layout = () => {
               <span className="hidden lg:block">Explore</span>
             </Link>
 
-            <Link
-              to="/messages"
-              className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted"
-            >
+            <Link to="/" className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted">
               <div>
                 <MailIcon size={24} />
               </div>
 
               <span className="hidden lg:block">Messages</span>
+            </Link>
+
+            <Link to="/" className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted">
+              <div>
+                <BookmarkIcon size={24} />
+              </div>
+
+              <span className="hidden lg:block">Bookmarks</span>
+            </Link>
+
+            <Link to="/" className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted">
+              <div>
+                <BellIcon size={24} />
+              </div>
+
+              <span className="hidden lg:block">Notifications</span>
             </Link>
           </div>
 
