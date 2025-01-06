@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
-    "@nostr-dev-kit/ndk": "^2.10.7",
-    "@nostr-dev-kit/ndk-cache-dexie": "^2.5.8",
+    "@nostr-dev-kit/ndk": "^2.11.0",
+    "@nostr-dev-kit/ndk-cache-dexie": "^2.5.9",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
