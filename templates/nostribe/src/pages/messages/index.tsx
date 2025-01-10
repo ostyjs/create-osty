@@ -24,7 +24,7 @@ export const MessagesPage = () => {
 
   return (
     <>
-      <div className="h-full">
+      <div className="h-full w-full">
         <Messages npub={npub} />
       </div>
     </>

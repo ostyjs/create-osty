@@ -133,7 +133,7 @@ const Layout = () => {
             <div>{activeUser ? <ActiveUserWidget /> : <LoginWidget />}</div>
           </div>
 
-          <div className="h-full w-full overflow-y-auto pb-32">
+          <div className="h-full w-full pb-32 md:pb-0">
             <Outlet />
           </div>
 
