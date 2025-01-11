@@ -21,10 +21,10 @@ export const ChatItem = memo(
       }
 
       const _chat = new NDKEvent(ndk, chat.rawEvent());
-      _chat.decrypt(chat.author, ndk.signer).then(() => {
+      _chat.decrypt().then(() => {
         setDecryptedContent(_chat.content);
       });
-    }, [ndk, chat, activeUser, setDecryptedContent]);
+    }, [ndk, chat, setDecryptedContent]);
 
     return (
       <>
