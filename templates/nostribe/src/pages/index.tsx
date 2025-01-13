@@ -70,7 +70,10 @@ const Layout = () => {
               <span className="hidden lg:block">Explore</span>
             </Link>
 
-            <Link to="/" className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted">
+            <Link
+              to="/messages"
+              className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted"
+            >
               <div>
                 <MailIcon size={24} />
               </div>
@@ -95,7 +98,7 @@ const Layout = () => {
             </Link>
           </div>
 
-          <div className="mt-auto">
+          <div className="mt-auto w-full">
             <div className="flex flex-col gap-4 w-full items-center">
               {sepehr && (
                 <ZapWidget target={sepehr}>
@@ -130,7 +133,7 @@ const Layout = () => {
             <div>{activeUser ? <ActiveUserWidget /> : <LoginWidget />}</div>
           </div>
 
-          <div className="h-full w-full overflow-y-auto pb-32">
+          <div className="h-full w-full pb-32 md:pb-0">
             <Outlet />
           </div>
 
@@ -236,6 +239,7 @@ const Layout = () => {
 const HomePage = () => import('./home');
 const NotePage = () => import('./note');
 const ProfilePage = () => import('./profile');
+const MessagesPage = () => import('./messages');
 
 export const router = createBrowserRouter([
   {
@@ -258,6 +262,18 @@ export const router = createBrowserRouter([
         path: '/profile/:npub',
         async lazy() {
           return { Component: (await ProfilePage()).ProfilePage };
+        },
+      },
+      {
+        path: '/messages',
+        async lazy() {
+          return { Component: (await MessagesPage()).MessagesPage };
+        },
+      },
+      {
+        path: '/messages/:npub',
+        async lazy() {
+          return { Component: (await MessagesPage()).MessagesPage };
         },
       },
     ],

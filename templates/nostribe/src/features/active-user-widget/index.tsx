@@ -27,7 +27,7 @@ export const ActiveUserWidget = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="flex items-center gap-2 cursor-pointer bg-secondary rounded-full px-2 py-1">
+        <div className="flex items-center gap-2 cursor-pointer bg-secondary rounded-full lg:pl-1 lg:pr-2 lg:py-1">
           <Avatar>
             <AvatarImage src={profile?.image} alt={profile?.name} />
             <AvatarFallback className="bg-background/50" />
