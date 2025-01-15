@@ -22,7 +22,7 @@ export const UserItem = memo(
           onClick={() => navigate(`/messages/${npub}`)}
         >
           <Avatar className="bg-secondary">
-            <AvatarImage src={profile?.image} alt="profile-image" />
+            <AvatarImage src={profile?.image} alt="profile-image" className="object-cover" />
           </Avatar>
 
           <div>

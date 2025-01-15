@@ -26,7 +26,7 @@ export const NoteHeader = ({ event }: { event: NDKEvent }) => {
           className="bg-foreground/10 hover:cursor-pointer"
           onClick={() => navigate(`/profile/${new NDKUser({ pubkey: event.pubkey }).npub}`)}
         >
-          <AvatarImage src={profile?.image} alt={profile?.name} />
+          <AvatarImage src={profile?.image} alt={profile?.name} className="object-cover" />
           <AvatarFallback />
         </Avatar>
 
