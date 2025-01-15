@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { Chats, ListOfUsers } from './components';
 
-export const Messages = memo(
+export const MessagesWidget = memo(
   ({ npub }: { npub: string | undefined }) => {
     return (
       <>

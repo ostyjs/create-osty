@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { Spinner } from '@/shared/components/spinner';
 
-import { Messages } from '@/features/messages';
+import { MessagesWidget } from '@/features/messages-widget';
 
 export const MessagesPage = () => {
   const { npub } = useParams();
@@ -25,7 +25,7 @@ export const MessagesPage = () => {
   return (
     <>
       <div className="h-full w-full">
-        <Messages npub={npub} />
+        <MessagesWidget npub={npub} />
       </div>
     </>
   );
