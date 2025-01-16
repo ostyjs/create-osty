@@ -27,13 +27,13 @@ export const ActiveUserWidget = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <div className="flex items-center gap-2 cursor-pointer bg-secondary rounded-full lg:pl-1 lg:pr-2 lg:py-1">
+        <div className="flex items-center gap-2 cursor-pointer bg-secondary rounded-full xl:pl-1 xl:pr-2 xl:py-1">
           <Avatar>
             <AvatarImage src={profile?.image} alt={profile?.name} className="object-cover" />
             <AvatarFallback className="bg-background/50" />
           </Avatar>
 
-          <div className="text-start pr-2 hidden lg:block">
+          <div className="text-start pr-2 hidden xl:block">
             {profile?.name && <div className="text-sm">{profile.name}</div>}
             <div className="text-xs text-primary/70">
               {profile?.nip05 || ellipsis(activeUser.npub, 10)}
