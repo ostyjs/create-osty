@@ -6,7 +6,7 @@ export const NotePage = () => {
   const { noteId } = useParams();
 
   return (
-    <div className="pt-2">
+    <div className="pt-2 h-full w-full overflow-y-auto">
       <NoteByNoteId noteId={noteId} />
     </div>
   );

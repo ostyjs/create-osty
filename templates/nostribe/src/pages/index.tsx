@@ -28,6 +28,7 @@ import { useTheme } from '@/shared/components/theme-provider';
 import { ActiveUserWidget } from '@/features/active-user-widget';
 import { LoginWidget } from '@/features/login-widget';
 import { SearchWidget } from '@/features/search-widget';
+import { TrendingNotesWidget } from '@/features/trending-notes-widget';
 import { ZapWidget } from '@/features/zap-widget';
 
 const Layout = () => {
@@ -42,70 +43,82 @@ const Layout = () => {
 
   return (
     <>
-      <div className="flex h-full w-full max-w-screen-lg mx-auto overflow-hidden">
+      <div className="h-full w-full max-w-screen-xl mx-auto overflow-hidden grid grid-cols-1 md:grid-cols-12">
         <div
           id="sidebar"
-          className="hidden flex-col gap-2 overflow-hidden items-center p-2 border-r w-16 md:flex lg:w-48"
+          className="hidden flex-col gap-2 overflow-hidden items-center w-full p-2 border-r md:flex md:col-span-1 xl:items-start xl:col-span-2"
         >
-          <Link to="/" className="flex items-center gap-2 p-2 w-full">
+          <Link to="/" className="flex items-center gap-2 p-2">
             <div className="w-8 h-8">
               <img src="/nostribe-64.png" alt="Nostribe" className="w-8 h-8 object-contain" />
             </div>
 
-            <span className="text-lg font-bold hidden lg:block">Nostribe</span>
+            <span className="text-lg font-bold hidden xl:block">Nostribe</span>
           </Link>
 
-          <div className="flex flex-col gap-2 w-full items-center lg:items-start">
-            <Link to="/" className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted">
+          <div className="flex flex-col gap-2 items-center xl:w-full xl:items-start">
+            <Link
+              to="/"
+              className="flex items-center gap-2 p-2 text-primary/60 hover:text-primary w-full rounded-lg hover:bg-secondary"
+            >
               <div>
                 <HomeIcon size={24} />
               </div>
 
-              <span className="hidden lg:block">Home</span>
+              <span className="hidden xl:block">Home</span>
             </Link>
 
-            <Link to="/" className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted">
+            <Link
+              to="/"
+              className="flex items-center gap-2 p-2 text-primary/60 hover:text-primary w-full rounded-lg hover:bg-secondary"
+            >
               <div>
                 <CompassIcon size={24} />
               </div>
 
-              <span className="hidden lg:block">Explore</span>
+              <span className="hidden xl:block">Explore</span>
             </Link>
 
             <Link
               to="/messages"
-              className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted"
+              className="flex items-center gap-2 p-2 text-primary/60 hover:text-primary w-full rounded-lg hover:bg-secondary"
             >
               <div>
                 <MailIcon size={24} />
               </div>
 
-              <span className="hidden lg:block">Messages</span>
+              <span className="hidden xl:block">Messages</span>
             </Link>
 
-            <Link to="/" className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted">
+            <Link
+              to="/"
+              className="flex items-center gap-2 p-2 text-primary/60 hover:text-primary w-full rounded-lg hover:bg-secondary"
+            >
               <div>
                 <BookmarkIcon size={24} />
               </div>
 
-              <span className="hidden lg:block">Bookmarks</span>
+              <span className="hidden xl:block">Bookmarks</span>
             </Link>
 
-            <Link to="/" className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted">
+            <Link
+              to="/"
+              className="flex items-center gap-2 p-2 text-primary/60 hover:text-primary w-full rounded-lg hover:bg-secondary"
+            >
               <div>
                 <BellIcon size={24} />
               </div>
 
-              <span className="hidden lg:block">Notifications</span>
+              <span className="hidden xl:block">Notifications</span>
             </Link>
 
             <SearchWidget>
-              <div className="flex items-center gap-2 p-2 rounded-lg w-full hover:bg-muted hover:cursor-pointer">
+              <div className="flex items-center gap-2 p-2 text-primary/60 hover:text-primary w-full rounded-lg hover:bg-secondary hover:cursor-pointer">
                 <div>
                   <SearchIcon size={24} />
                 </div>
 
-                <span className="hidden lg:block">Search</span>
+                <span className="hidden xl:block">Search</span>
               </div>
             </SearchWidget>
           </div>
@@ -115,19 +128,22 @@ const Layout = () => {
               {sepehr && (
                 <ZapWidget target={sepehr}>
                   <div className="flex items-center gap-2 p-2 rounded-lg hover:bg-muted hover:cursor-pointer">
-                    <span className="text-xs hidden lg:block">Buy me a coffee</span>
+                    <span className="text-xs hidden xl:block">Buy me a coffee</span>
 
-                    <CoffeeIcon className="w-5 h-5 lg:w-4 lg:h-4" />
+                    <CoffeeIcon className="w-5 h-5 xl:w-4 xl:h-4" />
                   </div>
                 </ZapWidget>
               )}
 
-              <div className="w-full">{activeUser ? <ActiveUserWidget /> : <LoginWidget />}</div>
+              <div>{activeUser ? <ActiveUserWidget /> : <LoginWidget />}</div>
             </div>
           </div>
         </div>
 
-        <div id="main" className="overflow-hidden w-full">
+        <div
+          id="main"
+          className="overflow-hidden w-full col-span-12 md:col-span-11 lg:col-span-8 xl:col-span-7"
+        >
           <div
             id="navbar"
             className="flex items-center justify-between p-2 border-b w-full bg-background md:hidden"
@@ -145,7 +161,7 @@ const Layout = () => {
             <div>{activeUser ? <ActiveUserWidget /> : <LoginWidget />}</div>
           </div>
 
-          <div className="h-full w-full pb-32 md:pb-0">
+          <div className="h-full w-full pb-28 md:pb-0">
             <Outlet />
           </div>
 
@@ -250,6 +266,13 @@ const Layout = () => {
               </DropdownMenu>
             </div>
           </div>
+        </div>
+
+        <div
+          id="rightbar"
+          className="hidden border-l flex-col gap-2 overflow-hidden items-center p-2 lg:flex lg:col-span-3"
+        >
+          <TrendingNotesWidget />
         </div>
       </div>
     </>
