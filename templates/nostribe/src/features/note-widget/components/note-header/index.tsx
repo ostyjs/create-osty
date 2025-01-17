@@ -35,14 +35,14 @@ export const NoteHeader = ({ event }: { event: NDKEvent }) => {
             className="w-fit font-semibold leading-tight hover:cursor-pointer"
             onClick={() => navigate(`/profile/${new NDKUser({ pubkey: event.pubkey }).npub}`)}
           >
-            {profile?.name}
+            {profile?.name?.toString()}
           </p>
 
           <p
             className="w-fit text-xs text-gray-500 leading-tight hover:cursor-pointer"
             onClick={() => navigate(`/profile/${new NDKUser({ pubkey: event.pubkey }).npub}`)}
           >
-            {profile?.nip05}
+            {profile?.nip05?.toString()}
           </p>
         </div>
 

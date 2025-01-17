@@ -1,11 +1,11 @@
-import { NDKEvent } from '@nostr-dev-kit/ndk';
+import { NDKEvent, NDKUser } from '@nostr-dev-kit/ndk';
 import { useActiveUser, useNdk } from 'nostr-hooks';
 import { memo, useEffect, useState } from 'react';
 
 import { cn } from '@/shared/utils';
 
 export const ChatItem = memo(
-  ({ chat }: { chat: NDKEvent }) => {
+  ({ chat, targetUser }: { chat: NDKEvent; targetUser: NDKUser }) => {
     const [decryptedContent, setDecryptedContent] = useState<string>('');
 
     const { activeUser } = useActiveUser();
@@ -21,10 +21,10 @@ export const ChatItem = memo(
       }
 
       const _chat = new NDKEvent(ndk, chat.rawEvent());
-      _chat.decrypt().then(() => {
+      _chat.decrypt(targetUser).then(() => {
         setDecryptedContent(_chat.content);
       });
-    }, [ndk, chat, setDecryptedContent]);
+    }, [ndk, chat, setDecryptedContent, targetUser]);
 
     return (
       <>
@@ -36,17 +36,18 @@ export const ChatItem = memo(
         >
           <div
             className={cn(
-              'p-2 rounded-lg',
+              'p-2 rounded-lg max-w-[80%]',
               chat.pubkey === activeUser?.pubkey
                 ? 'bg-purple-500/20 text-primary'
                 : 'bg-secondary text-secondary-foreground',
             )}
           >
-            <p>{decryptedContent}</p>
+            <p className="[overflow-wrap:anywhere]">{decryptedContent}</p>
           </div>
         </div>
       </>
     );
   },
-  (prev, next) => prev.chat.id === next.chat.id,
+  (prev, next) =>
+    prev.chat.id === next.chat.id && prev.targetUser.pubkey === next.targetUser.pubkey,
 );

@@ -1,4 +1,4 @@
 export * from './chat-item';
-export * from './chats';
-export * from './list-of-users';
+export * from './chats-list';
 export * from './user-item';
+export * from './users-list';

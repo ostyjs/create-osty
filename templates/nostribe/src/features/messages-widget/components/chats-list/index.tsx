@@ -7,7 +7,7 @@ import { Input } from '@/shared/components/ui/input';
 
 import { ChatItem } from '../chat-item';
 
-export const Chats = memo(
+export const ChatsList = memo(
   ({ npub }: { npub: string }) => {
     const [input, setInput] = useState('');
 
@@ -76,7 +76,7 @@ export const Chats = memo(
         <div className="w-full h-full overflow-hidden flex flex-col justify-between gap-4">
           <div className="flex flex-col gap-4 overflow-y-auto h-full w-full p-4">
             {(chats || []).map((chat) => (
-              <ChatItem key={chat.id} chat={chat} />
+              <ChatItem key={chat.id} chat={chat} targetUser={targetUser} />
             ))}
           </div>
 
