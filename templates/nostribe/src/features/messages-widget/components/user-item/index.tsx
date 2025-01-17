@@ -18,17 +18,21 @@ export const UserItem = memo(
     return (
       <>
         <div
-          className="p-4 border-b flex items-center gap-2 hover:cursor-pointer hover:bg-secondary"
+          className="px-4 py-2 flex items-center gap-2 hover:cursor-pointer hover:bg-secondary"
           onClick={() => navigate(`/messages/${npub}`)}
         >
           <Avatar className="bg-secondary">
-            <AvatarImage src={profile?.image} alt="profile-image" className="object-cover" />
+            <AvatarImage
+              src={profile?.image?.toString()}
+              alt="profile-image"
+              className="object-cover"
+            />
           </Avatar>
 
-          <div>
-            {profile && !!profile.name && <div>{profile.name}</div>}
+          <div className="hidden md:block">
+            {profile?.name && <div>{ellipsis(profile.name.toString(), 20)}</div>}
             <div className="text-gray-500 text-sm">
-              {profile && profile.nip05 ? profile.nip05 : ellipsis(npub, 10)}
+              {ellipsis(profile?.nip05?.toString() || npub, 25)}
             </div>
           </div>
         </div>
