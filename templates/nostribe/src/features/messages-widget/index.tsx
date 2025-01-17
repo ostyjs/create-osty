@@ -7,7 +7,7 @@ export const MessagesWidget = memo(
     return (
       <>
         <div className="flex overflow-hidden w-full h-full">
-          <div className="max-w-72 w-full border-r overflow-y-hidden h-full">
+          <div className="max-w-72 shrink-0 border-r overflow-y-hidden h-full">
             <ListOfUsers />
           </div>
 

@@ -36,7 +36,7 @@ export const ListOfUsers = memo(() => {
 
   return (
     <>
-      <div className="flex flex-col w-full h-full overflow-y-auto">
+      <div className="flex flex-col w-full h-full overflow-y-auto overflow-x-hidden">
         {(uniquePubkeys || []).map((p) => (
           <UserItem key={p.toString()} pubkey={p} />
         ))}
