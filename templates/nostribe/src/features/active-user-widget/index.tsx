@@ -36,7 +36,7 @@ export const ActiveUserWidget = () => {
           <div className="text-start pr-2 hidden xl:block">
             {profile?.name && <div className="text-sm">{profile.name}</div>}
             <div className="text-xs text-primary/70">
-              {profile?.nip05 || ellipsis(activeUser.npub, 10)}
+              {profile?.nip05?.toString() || ellipsis(activeUser.npub, 10)}
             </div>
           </div>
         </div>

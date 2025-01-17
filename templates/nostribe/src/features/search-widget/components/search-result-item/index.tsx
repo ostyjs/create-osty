@@ -20,7 +20,7 @@ export const SearchResultItem = memo(
         try {
           const profile = profileFromEvent(event);
 
-          if (profile.nip05) {
+          if (profile.nip05 && typeof profile.nip05 === 'string') {
             const isValidated = await event.author.validateNip05(profile.nip05);
 
             if (isValidated) {

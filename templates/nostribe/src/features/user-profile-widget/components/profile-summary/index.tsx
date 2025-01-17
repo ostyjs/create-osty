@@ -29,7 +29,7 @@ export const ProfileSummary = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <Muted>{profile?.nip05}</Muted>
+          <Muted>{profile?.nip05?.toString()}</Muted>
 
           {/* <div className="ml-auto flex items-center gap-2">
             <Muted>placeholder</Muted>
