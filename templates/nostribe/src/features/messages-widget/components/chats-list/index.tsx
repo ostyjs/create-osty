@@ -7,7 +7,7 @@ import { Input } from '@/shared/components/ui/input';
 
 import { ChatItem } from '../chat-item';
 
-export const Chats = memo(
+export const ChatsList = memo(
   ({ npub }: { npub: string }) => {
     const [input, setInput] = useState('');
 

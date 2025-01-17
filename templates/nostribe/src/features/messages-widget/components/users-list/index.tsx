@@ -4,7 +4,7 @@ import { memo, useEffect, useMemo } from 'react';
 
 import { UserItem } from '../user-item';
 
-export const ListOfUsers = memo(() => {
+export const UsersList = memo(() => {
   const { activeUser } = useActiveUser();
 
   const subId = activeUser ? `messages-${activeUser.pubkey}` : undefined;
