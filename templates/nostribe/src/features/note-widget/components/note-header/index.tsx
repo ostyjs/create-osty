@@ -1,6 +1,14 @@
 import { NDKEvent, NDKUser } from '@nostr-dev-kit/ndk';
 import { formatDistanceToNowStrict } from 'date-fns';
-import { EllipsisIcon, FileJsonIcon, HeartIcon, LinkIcon, TagIcon, TextIcon } from 'lucide-react';
+import {
+  EllipsisIcon,
+  FileJsonIcon,
+  HeartIcon,
+  LinkIcon,
+  SquareArrowOutUpRight,
+  TagIcon,
+  TextIcon,
+} from 'lucide-react';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/shared/components/ui/avatar';
 import { Button } from '@/shared/components/ui/button';
@@ -59,6 +67,11 @@ export const NoteHeader = ({ event }: { event: NDKEvent }) => {
             </DropdownMenuTrigger>
 
             <DropdownMenuContent align="end" sideOffset={8}>
+              <DropdownMenuItem onClick={() => navigate(`/note/${nevent}`)}>
+                <SquareArrowOutUpRight className="w-4 h-4 mr-2" />
+                Open
+              </DropdownMenuItem>
+
               <DropdownMenuItem
                 onClick={() => {
                   // TODO
