@@ -70,7 +70,7 @@ Join the [Osty Community on Telegram 👉 @ostyjs](https://t.me/ostyjs) to stay 
 
 ## Support
 
-Osty is an MIT-licensed open-source project. It's an independent project with its ongoing development made possible entirely thanks to the support by the [OpenSats](https://opensats.org) organization.
+Osty is an independent MIT-licensed Open-Source project with its ongoing development made possible entirely thanks to the support by the [OpenSats](https://opensats.org) organization.
 If you'd like to support the development of Osty, please consider donating via the following methods:
 
 - Bitcoin Lightning: [https://getalby.com/p/sepehr](https://getalby.com/p/sepehr)
