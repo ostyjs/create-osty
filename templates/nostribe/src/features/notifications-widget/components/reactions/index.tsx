@@ -45,9 +45,9 @@ export const Reactions = memo(({ reactions }: { reactions: NDKEvent[] | undefine
   return (
     <>
       {Array.from(categorizedReactions.keys()).map((eventId) => (
-        <div key={eventId} className="px-2 py-1">
-          <div className="rounded-md border flex flex-col gap-2">
-            <div className="flex flex-wrap items-center gap-2 px-2 py-1 border-b">
+        <div key={eventId} className="px-2 pb-2">
+          <div className="border rounded-sm shadow-md bg-background transition-colors duration-500 ease-out hover:border-primary/30">
+            <div className="flex flex-wrap items-center gap-2 px-2 py-2">
               <ThumbsUpIcon size={18} />
 
               {categorizedReactions
@@ -55,7 +55,9 @@ export const Reactions = memo(({ reactions }: { reactions: NDKEvent[] | undefine
                 ?.map((reaction) => <Reaction key={reaction.id} reaction={reaction} />)}
             </div>
 
-            <NoteByNoteId noteId={eventId} />
+            <div className="pb-2">
+              <NoteByNoteId noteId={eventId} />
+            </div>
           </div>
         </div>
       ))}
