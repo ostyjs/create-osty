@@ -39,7 +39,7 @@ export const useProfileNotes = ({
     }
 
     createSubscription({
-      filters: [{ authors: [user.pubkey], kinds: [1], limit: 10 }],
+      filters: [{ authors: [user.pubkey], kinds: [1], limit: 50 }],
       opts: { groupableDelay: 500 },
     });
   }, [createSubscription, user.pubkey]);
