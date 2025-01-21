@@ -40,7 +40,8 @@ export const useNoteCommentBtn = (event: NDKEvent | undefined) => {
             return (
               eTags.some(
                 (eTag) => eTag.length > 3 && eTag[1] === event?.id && eTag[3] === 'root',
-              ) && !eTags.some((eTag) => eTag.length > 3 && eTag[3] === 'reply')
+              ) &&
+              !eTags.some((eTag) => eTag.length > 3 && eTag[3] === 'reply' && eTag[1] !== event?.id)
             );
           } else {
             return (

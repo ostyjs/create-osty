@@ -35,7 +35,7 @@ export const useNoteCommentsWidget = (event: NDKEvent) => {
           if (event.id === rootEventId) {
             return (
               eTags.some((eTag) => eTag.length > 3 && eTag[1] === event.id && eTag[3] === 'root') &&
-              !eTags.some((eTag) => eTag.length > 3 && eTag[3] === 'reply')
+              !eTags.some((eTag) => eTag.length > 3 && eTag[3] === 'reply' && eTag[1] !== event.id)
             );
           } else {
             return (
@@ -51,11 +51,12 @@ export const useNoteCommentsWidget = (event: NDKEvent) => {
   );
 
   useEffect(() => {
-    createSubscription({
-      filters: [{ kinds: [1], '#e': [rootEventId], limit: 10 }],
-      opts: { groupableDelay: 500 },
-    });
-  }, [createSubscription]);
+    rootEventId &&
+      createSubscription({
+        filters: [{ kinds: [1], '#e': [rootEventId], limit: 10 }],
+        opts: { groupableDelay: 500 },
+      });
+  }, [createSubscription, rootEventId]);
 
   return {
     processedEvents,
