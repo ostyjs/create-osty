@@ -35,7 +35,11 @@ export const NoteFooter = memo(
           <NoteBookmarkBtn event={event} inView={inView} />
         </div>
 
-        {showingComments && <NoteCommentsWidget event={event} />}
+        {showingComments && (
+          <div className="pb-2">
+            <NoteCommentsWidget event={event} />
+          </div>
+        )}
       </>
     );
   },

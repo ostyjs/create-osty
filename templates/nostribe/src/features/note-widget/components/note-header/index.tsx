@@ -29,7 +29,7 @@ export const NoteHeader = ({ event }: { event: NDKEvent }) => {
 
   return (
     <>
-      <div className="pb-2 flex justify-between gap-2" ref={ref}>
+      <div className="pt-2 flex justify-between gap-2" ref={ref}>
         <Avatar
           className="bg-foreground/10 hover:cursor-pointer"
           onClick={() => navigate(`/profile/${new NDKUser({ pubkey: event.pubkey }).npub}`)}
@@ -107,7 +107,9 @@ export const NoteHeader = ({ event }: { event: NDKEvent }) => {
         </div>
       </div>
 
-      <NoteParentPreview event={event} />
+      <div className="pt-2">
+        <NoteParentPreview event={event} />
+      </div>
     </>
   );
 };

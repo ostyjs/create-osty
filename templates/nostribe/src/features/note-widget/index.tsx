@@ -20,9 +20,11 @@ export const NoteByEvent = memo(
       return (
         <>
           <div className="px-2">
-            <NoteHeader event={event} />
-            <NoteContent event={event} />
-            <NoteFooter event={event} />
+            <div className="px-2 border rounded-sm shadow-md bg-background transition-colors duration-500 ease-out hover:border-primary/30">
+              <NoteHeader event={event} />
+              <NoteContent event={event} />
+              <NoteFooter event={event} />
+            </div>
           </div>
         </>
       );

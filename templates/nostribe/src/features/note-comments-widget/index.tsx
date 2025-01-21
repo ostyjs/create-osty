@@ -4,8 +4,6 @@ import { Button } from '@/shared/components/ui/button';
 
 import { Spinner } from '@/shared/components/spinner';
 
-import { cn } from '@/shared/utils';
-
 import { NewNoteWidget } from '@/features/new-note-widget';
 import { NoteByEvent } from '@/features/note-widget';
 
@@ -18,16 +16,14 @@ export const NoteCommentsWidget = ({ event }: { event: NDKEvent }) => {
     <>
       <NewNoteWidget replyingToEvent={event} />
 
-      <div className="bg-foreground/5 pl-4 -mx-2">
+      <div className="-mx-2">
         {processedEvents === undefined ? (
           <Spinner />
         ) : (
           processedEvents.length > 0 && (
             <div className="pt-2 flex flex-col gap-2">
-              {processedEvents.map((event, i) => (
-                <div className={cn({ 'border-b': i !== processedEvents.length - 1 })}>
-                  <NoteByEvent key={event.id} event={event} />
-                </div>
+              {processedEvents.map((event) => (
+                <NoteByEvent key={event.id} event={event} />
               ))}
             </div>
           )
