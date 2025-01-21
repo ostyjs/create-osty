@@ -102,7 +102,7 @@ const Layout = () => {
             </Link>
 
             <Link
-              to="/"
+              to="/notifications"
               className="flex items-center gap-2 p-2 text-primary/60 hover:text-primary w-full rounded-lg hover:bg-secondary"
             >
               <div>
@@ -176,14 +176,6 @@ const Layout = () => {
                 </div>
               </Link>
 
-              <SearchWidget>
-                <div className="flex items-center gap-2 text-primary/60 hover:text-primary hover:cursor-pointer">
-                  <div>
-                    <SearchIcon size={28} strokeWidth={1.4} />
-                  </div>
-                </div>
-              </SearchWidget>
-
               <Link
                 to="/explore"
                 className="flex items-center gap-2 text-primary/60 hover:text-primary"
@@ -193,12 +185,29 @@ const Layout = () => {
                 </div>
               </Link>
 
+              <SearchWidget>
+                <div className="flex items-center gap-2 text-primary/60 hover:text-primary hover:cursor-pointer">
+                  <div>
+                    <SearchIcon size={28} strokeWidth={1.4} />
+                  </div>
+                </div>
+              </SearchWidget>
+
               <Link
                 to="/messages"
                 className="flex items-center gap-2 text-primary/60 hover:text-primary"
               >
                 <div>
                   <MailIcon size={28} strokeWidth={1.4} />
+                </div>
+              </Link>
+
+              <Link
+                to="/notifications"
+                className="flex items-center gap-2 text-primary/60 hover:text-primary"
+              >
+                <div>
+                  <BellIcon size={28} strokeWidth={1.4} />
                 </div>
               </Link>
 
@@ -283,6 +292,7 @@ const HomePage = () => import('./home');
 const NotePage = () => import('./note');
 const ProfilePage = () => import('./profile');
 const MessagesPage = () => import('./messages');
+const NotificationsPage = () => import('./notifications');
 
 export const router = createBrowserRouter([
   {
@@ -317,6 +327,12 @@ export const router = createBrowserRouter([
         path: '/messages/:npub',
         async lazy() {
           return { Component: (await MessagesPage()).MessagesPage };
+        },
+      },
+      {
+        path: '/notifications',
+        async lazy() {
+          return { Component: (await NotificationsPage()).NotificationsPage };
         },
       },
     ],

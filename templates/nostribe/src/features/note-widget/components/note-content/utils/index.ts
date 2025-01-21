@@ -45,10 +45,17 @@ export const parseChunks = (content: string): Chunk[] => {
       const decoded = decode(match[0].substring(6));
       switch (decoded.type) {
         case 'naddr':
-        case 'nevent':
           matches.push({
             type: decoded.type,
             content: match[0],
+            index: match.index,
+            fullLength: match[0].length,
+          });
+          break;
+        case 'nevent':
+          matches.push({
+            type: decoded.type,
+            content: JSON.stringify(decoded.data),
             index: match.index,
             fullLength: match[0].length,
           });
