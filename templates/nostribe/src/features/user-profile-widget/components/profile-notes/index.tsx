@@ -3,8 +3,6 @@ import { memo } from 'react';
 
 import { Button } from '@/shared/components/ui/button';
 
-import { cn } from '@/shared/utils';
-
 import { NoteByEvent } from '@/features/note-widget';
 
 import { useProfileNotes } from './hooks';
@@ -28,11 +26,7 @@ export const ProfileNotes = memo(
     return (
       <>
         <div className="flex flex-col gap-2">
-          {processedEvents?.map((event, i) => (
-            <div className={cn({ 'border-b': i !== processedEvents.length - 1 })}>
-              <NoteByEvent key={event.id} event={event} />
-            </div>
-          ))}
+          {processedEvents?.map((event) => <NoteByEvent key={event.id} event={event} />)}
         </div>
 
         {hasMore && (
