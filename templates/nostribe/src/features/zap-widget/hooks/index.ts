@@ -55,7 +55,10 @@ export const useZapWidget = (target: NDKEvent | NDKUser | undefined) => {
         comment,
         ndk,
         lnPay,
-        tags: target instanceof NDKEvent ? [['e', target.id]] : undefined,
+        tags:
+          target instanceof NDKEvent
+            ? [target.isParamReplaceable() ? ['a', target.tagAddress()] : ['e', target.id]]
+            : undefined,
       },
     );
 
