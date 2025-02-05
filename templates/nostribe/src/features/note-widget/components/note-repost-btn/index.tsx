@@ -14,8 +14,7 @@ export const NoteRepostBtn = ({ event, inView }: { event: NDKEvent; inView: bool
     <>
       <Button
         variant="link"
-        size="icon"
-        className={cn(isRepostedByMe ? 'text-green-600' : 'opacity-50 hover:opacity-100')}
+        className={cn('px-0', isRepostedByMe ? 'text-green-600' : 'opacity-50 hover:opacity-100')}
         onClick={repost}
       >
         <div>

@@ -14,8 +14,7 @@ export const NoteBookmarkBtn = ({ event, inView }: { event: NDKEvent; inView: bo
     <>
       <Button
         variant="link"
-        size="icon"
-        className={cn(isBookmarkedByMe ? 'text-green-600' : 'opacity-50 hover:opacity-100')}
+        className={cn('px-0', isBookmarkedByMe ? 'text-green-600' : 'opacity-50 hover:opacity-100')}
         onClick={isBookmarkedByMe ? unbookmark : bookmark}
       >
         <BookmarkIcon size={18} />

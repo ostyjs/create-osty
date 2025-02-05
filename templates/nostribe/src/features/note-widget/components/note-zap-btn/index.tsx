@@ -17,8 +17,7 @@ export const NoteZapBtn = ({ event, inView }: { event: NDKEvent; inView: boolean
       <ZapWidget target={inView ? event : undefined}>
         <Button
           variant="link"
-          size="icon"
-          className={cn(isZapedByMe ? 'text-orange-600' : 'opacity-50 hover:opacity-100')}
+          className={cn('px-0', isZapedByMe ? 'text-orange-600' : 'opacity-50 hover:opacity-100')}
         >
           <div>
             <ZapIcon size={18} />

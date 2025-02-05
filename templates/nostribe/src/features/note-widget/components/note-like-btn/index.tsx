@@ -14,8 +14,7 @@ export const NoteLikeBtn = ({ event, inView }: { event: NDKEvent; inView: boolea
     <>
       <Button
         variant="link"
-        size="icon"
-        className={cn(isLikedByMe ? 'text-red-600' : 'opacity-50 hover:opacity-100')}
+        className={cn('px-0', isLikedByMe ? 'text-red-600' : 'opacity-50 hover:opacity-100')}
         onClick={like}
       >
         <div>
