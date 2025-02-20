@@ -1,7 +1,7 @@
 {
   "name": "nostribe",
   "private": true,
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -50,7 +50,7 @@
     "input-otp": "^1.4.1",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.4.3",
-    "nostr-hooks": "^4.3.1",
+    "nostr-hooks": "^4.3.2",
     "nostr-tools": "^2.10.4",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
