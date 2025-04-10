@@ -2,6 +2,7 @@ import { NDKEvent } from '@nostr-dev-kit/ndk';
 import { memo } from 'react';
 
 import { NoteCommentsWidget } from '@/features/note-comments-widget';
+import { ReactionWidget } from '@/features/reaction-widget';
 
 import {
   NoteBookmarkBtn,
@@ -19,6 +20,8 @@ export const NoteFooter = memo(
 
     return (
       <>
+        {inView && <ReactionWidget event={event} />}
+
         <div className="flex items-center justify-between gap-2" ref={ref}>
           <NoteCommentBtn
             onClick={() => setShowingComments((prev) => !prev)}
