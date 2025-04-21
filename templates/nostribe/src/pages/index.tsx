@@ -11,6 +11,7 @@ import {
   MoonIcon,
   SearchIcon,
   SunIcon,
+  TextIcon,
 } from 'lucide-react';
 import { useActiveUser, useNdk } from 'nostr-hooks';
 import { Link, Outlet, createBrowserRouter } from 'react-router-dom';
@@ -66,6 +67,17 @@ const Layout = () => {
               </div>
 
               <span className="hidden xl:block">Home</span>
+            </Link>
+
+            <Link
+              to="/reads"
+              className="flex items-center gap-2 p-2 transition-colors duration-500 ease-out text-primary/60 hover:text-primary w-full rounded-lg hover:bg-secondary"
+            >
+              <div>
+                <TextIcon size={24} />
+              </div>
+
+              <span className="hidden xl:block">Reads</span>
             </Link>
 
             <Link
@@ -296,6 +308,7 @@ const NotePage = () => import('./note');
 const ProfilePage = () => import('./profile');
 const MessagesPage = () => import('./messages');
 const NotificationsPage = () => import('./notifications');
+const ReadsPage = () => import('./reads');
 
 export const router = createBrowserRouter([
   {
@@ -336,6 +349,12 @@ export const router = createBrowserRouter([
         path: '/notifications',
         async lazy() {
           return { Component: (await NotificationsPage()).NotificationsPage };
+        },
+      },
+      {
+        path: '/reads',
+        async lazy() {
+          return { Component: (await ReadsPage()).ReadsPage };
         },
       },
     ],
