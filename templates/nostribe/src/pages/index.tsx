@@ -309,6 +309,7 @@ const ProfilePage = () => import('./profile');
 const MessagesPage = () => import('./messages');
 const NotificationsPage = () => import('./notifications');
 const ReadsPage = () => import('./reads');
+const ArticlePage = () => import('./a');
 
 export const router = createBrowserRouter([
   {
@@ -355,6 +356,12 @@ export const router = createBrowserRouter([
         path: '/reads',
         async lazy() {
           return { Component: (await ReadsPage()).ReadsPage };
+        },
+      },
+      {
+        path: '/a/:naddr',
+        async lazy() {
+          return { Component: (await ArticlePage()).ArticlePage };
         },
       },
     ],
