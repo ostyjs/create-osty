@@ -14,7 +14,7 @@ export const ArticleHeader = ({ event, full = false }: { event: NDKEvent; full?:
 
   return (
     <div className="flex items-center justify-between gap-2 mb-1 w-full">
-      <div className="flex items-center gap-2 min-w-0">
+      <div className="flex items-center gap-2 min-w-0 w-full">
         <Link to={`/profile/${npub}`} className="flex items-center gap-2 min-w-0 group">
           <Avatar className="w-8 h-8">
             <AvatarImage src={profile?.image} alt={profile?.name} className="object-cover" />
@@ -29,8 +29,12 @@ export const ArticleHeader = ({ event, full = false }: { event: NDKEvent; full?:
             </div>
           </div>
         </Link>
-        <span className="ml-2 text-xs text-muted-foreground whitespace-nowrap">
-          {new Date((event.created_at || 0) * 1000).toLocaleDateString()}
+        <span className="ml-auto text-xs text-muted-foreground whitespace-nowrap">
+          {new Date((event.created_at || 0) * 1000).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })}
         </span>
       </div>
       <Button variant="ghost" size="icon" className="opacity-60 hover:opacity-100">

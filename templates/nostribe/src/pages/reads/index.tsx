@@ -31,10 +31,10 @@ export const ReadsPage = () => {
       <div className="w-full">
         <h2 className="text-2xl font-bold px-4 py-2 border-b">Nostr Reads</h2>
 
-        {isLoading && <p>Loading articles...</p>}
+        {isLoading && <p className="px-4 py-2">Loading articles...</p>}
 
         {!isLoading && events && events.length === 0 && (
-          <p className="text-muted-foreground">No articles found from your follows.</p>
+          <p className="px-4 py-2 text-muted-foreground">No articles found from your follows.</p>
         )}
 
         {reversedEvents.length > 0 &&

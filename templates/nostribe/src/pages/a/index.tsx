@@ -26,7 +26,7 @@ export const ArticlePage = () => {
 
   return (
     <div className="flex flex-col items-center h-full w-full overflow-y-auto">
-      <div className="w-full max-w-2xl mx-auto">
+      <div className="w-full mx-auto">
         <ArticleWidget event={event} full={true} />
       </div>
     </div>

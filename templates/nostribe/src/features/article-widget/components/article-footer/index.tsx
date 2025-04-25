@@ -8,8 +8,11 @@ import { ArticleRepostBtn } from '../article-repost-btn';
 import { ArticleZapBtn } from '../article-zap-btn';
 
 export const ArticleFooter = memo(
-  ({ event }: { event: NDKEvent }) => {
+  ({ event, full = false }: { event: NDKEvent; full?: boolean }) => {
     const [showingComments, setShowingComments] = useState(false);
+
+    // TODO: remove this
+    console.log(full);
 
     return (
       <div className="flex flex-col gap-2">
