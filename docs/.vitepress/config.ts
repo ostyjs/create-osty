@@ -33,6 +33,10 @@ export default defineConfig({
           items: [
             { text: 'What is Osty?', link: '/guide/what-is-osty' },
             { text: 'Getting Started', link: '/guide/getting-started' },
+            { text: 'Project Structure', link: '/guide/project-structure' },
+            { text: 'Nostr Integration', link: '/guide/nostr-integration' },
+            { text: 'Development', link: '/guide/development' },
+            { text: 'Community and Support', link: '/guide/community' },
           ],
         },
       ],
