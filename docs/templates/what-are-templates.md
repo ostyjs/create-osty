@@ -1,3 +1,19 @@
 # What are Templates?
 
-Osty templates are ready-to-use templates for React. They are designed to help you get started with your project quickly and easily. You can use them to create a new project.
+Templates contain the application files that `create-osty` copies into a new
+directory. The generated files belong to your project. Edit them directly to
+change the interface, routes, relays, and features.
+
+The CLI currently ships one template: [Nostribe](./nostribe), a React and
+TypeScript Nostr client. Vue and Svelte templates are not available in the
+current CLI.
+
+```sh
+npm create osty@latest my-nostr-app -- --template nostribe
+```
+
+The CLI renames the template's `_gitignore` to `.gitignore` and sets the generated
+`package.json` name. It then prints the commands to install dependencies and
+start development. Run those commands in the generated directory.
+
+See [Getting Started](../guide/getting-started) for the full setup process.
